@@ -1,10 +1,10 @@
 import React from "react";
-import Word from "./Word";
+import Grid from "./components/grid";
 
 const Home = () => {
   return (
     <div>
-      
+      <Grid />
     </div>
   );
 };

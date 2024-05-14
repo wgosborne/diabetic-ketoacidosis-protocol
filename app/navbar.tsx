@@ -11,8 +11,8 @@ const NavBar = () => {
   console.log(currPath);
 
   const links = [
-    { label: 'Dashboard', href: '/' },
-    { label: 'Issues', href: '/' }
+    { label: 'Rooms', href: '/' },
+    { label: 'Other', href: '/' }
   ];
 
   return (
