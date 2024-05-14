@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { SimpleGrid, Text } from '@chakra-ui/react';
 import {
@@ -8,16 +10,23 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+import { Button } from "@/components/ui/button"
+import { useRouter } from 'next/navigation';
 
 const Grid = () => {
+  const router = useRouter();
   const rooms = [112, 334, 6, 54];
+
+  const handleOnClick = (e: number) => {
+    router.push(`/rooms/` + e);
+  };
 
   return (
     <SimpleGrid
       columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
       padding="10px"
       spacing={6}
-      className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'
+      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
     >
       {rooms.map((room) => (
         <Card key={room}>
@@ -29,7 +38,7 @@ const Grid = () => {
             <p>Card Content</p>
           </CardContent>
           <CardFooter>
-            <p>Card Footer</p>
+          <Button onClick={() => handleOnClick(room)}>Select</Button>
           </CardFooter>
         </Card>
       ))}
