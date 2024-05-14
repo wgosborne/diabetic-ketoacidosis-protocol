@@ -2,3 +2,328 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+
+    --primary: 24 9.8% 10%;
+    --primary-foreground: 60 9.1% 97.8%;
+
+    --secondary: 60 4.8% 95.9%;
+    --secondary-foreground: 24 9.8% 10%;
+
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+
+    --accent: 60 4.8% 95.9%;
+    --accent-foreground: 24 9.8% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 20 14.3% 4.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 60 9.1% 97.8%;
+
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 60 9.1% 97.8%;
+
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 60 9.1% 97.8%;
+
+    --primary: 60 9.1% 97.8%;
+    --primary-foreground: 24 9.8% 10%;
+
+    --secondary: 12 6.5% 15.1%;
+    --secondary-foreground: 60 9.1% 97.8%;
+
+    --muted: 12 6.5% 15.1%;
+    --muted-foreground: 24 5.4% 63.9%;
+
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 60 9.1% 97.8%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 9.1% 97.8%;
+
+    --border: 12 6.5% 15.1%;
+    --input: 12 6.5% 15.1%;
+    --ring: 24 5.7% 82.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* FROM AUTOZONE */
+
+@font-face {
+  font-family: "Cond-Heavy";
+  src: url("../azAssets2/fonts/AutoZoneCond-Heavy.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Cond";
+  src: url("../azAssets2/fonts/AutoZoneCond.woff") format("woff");
+}
+
+.button {
+  font-family: "Cond-Heavy", sans-serif;
+  padding: 0.5rem 1rem; /* Use "p-2" for padding */
+  font-size: 0.875rem; /* Use "text-sm" for text size */
+  color: #ffffff; /* Use "text-white" for text color */
+  background-color: #e53e3e; /* Use "bg-red-700" for background color */
+  transition: background-color 0.2s ease-in-out; /* For hover transition */
+  border-radius: 0.5rem; /* Use "rounded-lg" for rounded corners */
+  outline: none; /* Remove outline on focus */
+  border: none; /* Remove border */
+  margin-bottom: 10px; /* Add margin-bottom */
+}
+
+label {
+  font-family: "Cond", sans-serif;
+}
+
+.label-bold {
+  font-family: "Cond-Heavy", sans-serif;
+}
+
+.button:hover {
+  background-color: #c53030 !important; /* Use "bg-red-800" for hover background color */
+}
+
+.button:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.5) !important; /* Use "focus:ring-4 focus:ring-red-300" for focus ring */
+}
+
+.block-style {
+  display:block !important;
+  width: full !important;
+  padding: 0.625rem/* 10px */ !important;
+}
+
+.checkbox {
+  accent-color: #e53e3e !important;
+  font-family: "Cond", sans-serif;
+}
+
+.table {
+  font-family: "Cond", sans-serif !important;
+}
+
+.table-header {
+  font-family: "Cond-Heavy", sans-serif !important;
+}
+
+.navbar {
+  font-family: "Cond-Heavy", sans-serif;
+}
+
+.primary-color {
+  background-color: #202124;
+  color: #ffffff; /* Text color for contrast */
+}
+
+.primary-color-on {
+  color: #202124;
+  background-color: #ffffff; /* Background color for contrast */
+}
+
+.secondary-color {
+  background-color: #ffffff;
+  color: #141414; /* Text color for contrast */
+}
+
+.secondary-color-on {
+  color: #ffffff;
+  background-color: #141414; /* Background color for contrast */
+}
+
+.accent-color {
+  background-color: #f26d0d;
+}
+
+.accent-color-on {
+  background-color: #f37f00;
+}
+
+/* Action Colors */
+.error-color {
+  background-color: #b30000;
+}
+
+.error-color-on {
+  background-color: #d52b1e;
+}
+
+.focus-color {
+  background-color: #015fcc;
+}
+
+.disabled-color {
+  background-color: #e6e6e6;
+}
+
+.disabled-color-on {
+  background-color: #202124;
+}
+
+.success-color {
+  background-color: #1f7400;
+}
+
+.success-color-on {
+  background-color: #46a323;
+}
+
+.info-color {
+  background-color: #007faf;
+}
+
+.info-color-on {
+  background-color: #009bd6;
+}
+
+.warning-color {
+  background-color: #ffc800;
+}
+
+/* Semantic Colors */
+.foreground-color {
+  background-color: #202124;
+  color: #ffffff; /* Text color for contrast */
+}
+
+.foreground-color-on {
+  color: #202124;
+  background-color: #ffffff; /* Background color for contrast */
+}
+
+.background-color {
+  background-color: #ffffff;
+}
+
+.background-color-on {
+  background-color: #141414;
+}
+
+/* Grayscale Colors */
+.gray-50 {
+  background-color: #ffffff;
+}
+
+.gray-50-on {
+  background-color: #141414;
+}
+
+.gray-100 {
+  background-color: #f2f2f2;
+}
+
+.gray-100-on {
+  background-color: #1d1d1d;
+}
+
+.gray-200 {
+  background-color: #e6e6e6;
+}
+
+.gray-200-on {
+  background-color: #202124;
+}
+
+.gray-300 {
+  background-color: #d6d6d6;
+}
+
+.gray-300-on {
+  background-color: #484848;
+}
+
+.gray-400 {
+  background-color: #949494;
+}
+
+.gray-400-on {
+  background-color: #6e6e6e;
+}
+
+.gray-500 {
+  background-color: #6e6e6e;
+}
+
+.gray-500-on {
+  background-color: #949494;
+}
+
+.gray-600 {
+  background-color: #484848;
+}
+
+.gray-600-on {
+  background-color: #d6d6d6;
+}
+
+.gray-700 {
+  background-color: #202124;
+}
+
+.gray-700-on {
+  background-color: #ffffff;
+}
+
+/* Static Colors */
+.black-color {
+  background-color: #141414;
+}
+
+.white-color {
+  background-color: #ffffff;
+}
+
+.success-error-color {
+  background-color: #047857;
+}
+
+.register-error-color {
+  background-color: #8c264f;
+}
+
+.orithin-error-color {
+  background-color: #b2b25a;
+}
+
+.inventory-error-color {
+  background-color: #92400E;
+}
+
+.undefined-error-color {
+  background-color: #FF0001
+}
+.noresult-error-color{
+  background-color: #2563EB;
+}
+.selected-color{
+  background-color: #484848;
+  border-color: #46a323;
+}

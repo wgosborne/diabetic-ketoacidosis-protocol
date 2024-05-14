@@ -1,9 +1,12 @@
-import Image from 'next/image'
+import React from "react";
+import Word from "./Word";
 
-export default function Home() {
+const Home = () => {
   return (
     <div>
-      
+      <Word />
     </div>
-  )
-}
+  );
+};
+
+export default Home;
