@@ -4,7 +4,7 @@ import Word from "./Word";
 const Home = () => {
   return (
     <div>
-      <Word />
+      
     </div>
   );
 };

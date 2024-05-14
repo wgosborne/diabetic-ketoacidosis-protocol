@@ -1,34 +1,33 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import React from "react";
-import classNames from "classnames";
-import logo from "../assets/AutoZone-Logo.png";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React from 'react';
+import { FaRegHospital } from 'react-icons/fa';
+import classNames from 'classnames';
 
 const NavBar = () => {
   const currPath = usePathname();
   console.log(currPath);
 
   const links = [
-    { label: "Release Results", href: "/" },
-    { label: "Plan a Pilot", href: "/" },
+    { label: 'Dashboard', href: '/' },
+    { label: 'Issues', href: '/' }
   ];
 
   return (
-    <nav className="flex space-x-6 borber-b mb-5 px-5 h-14 items-center navbar">
-      <Link href={"/"}>
-        {/* <Image height="60" width="95" src={logo} alt="AutoZone Logo" /> */}
+    <nav className="flex space-x-6 borber-b mb-5 px-5 h-14 items-center">
+      <Link href={'/'}>
+        <FaRegHospital />
       </Link>
       <ul className="flex space-x-6">
         {links.map((link) => (
           <Link
             key={link.href}
             className={classNames({
-              "text-zinc-900": link.href === currPath,
-              "text-zinc-500": link.href !== currPath,
-              "hover:text-zinc-800 transition-colors": true,
+              'text-zinc-900': link.href === currPath,
+              'text-zinc-500': link.href !== currPath,
+              'hover:text-zinc-800 transition-colors': true
             })}
             href={link.href}
           >

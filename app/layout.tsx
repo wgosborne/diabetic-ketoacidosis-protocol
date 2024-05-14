@@ -1,29 +1,33 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import NavBar from "./navbar";
+import "@radix-ui/themes/styles.css";
+import "./globals.css";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { Theme, ThemePanel } from '@radix-ui/themes';
+import NavBar from './navbar';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: "AutoZone Release Net",
-  description: "Created by UA MIS Capstone Team Spring 2024",
+  title: 'Diabetic Ketoaddosis Protocol',
+  description: 'Hampton Regional by Wagner Osborne'
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.variable}>
+        <Theme appearance="light" accentColor="orange">
           <NavBar />
-          <main>{children}</main>
+          <main className="p-5">{children}</main>
+        </Theme>
       </body>
     </html>
   );
 }
-
 
 // import './globals.css';
 
