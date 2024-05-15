@@ -6,7 +6,7 @@ const page = () => {
   )
 }
 
-export default page
+export default page;
 // import React from "react";
 // import Grid from "./components/grid";
 

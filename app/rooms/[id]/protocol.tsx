@@ -1,29 +1,27 @@
 "use client";
 
 import React, { useState } from 'react';
+import prisma from '@/prisma/client';
+import { room } from "@prisma/client";
 import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button"
 
 interface ProtocolProps {
-  currRoom: number;
+  currRoom: room;
 }
 
-const Protocol = (currRoom: ProtocolProps) => {
+const Protocol = ({currRoom}: ProtocolProps) => {
 
-  const initialStep = localStorage.getItem(`step ${currRoom}`) || 1;
-
-  const [step, setStep] = useState(Number(initialStep));
+  const [step, setStep] = useState(currRoom.step || 1);
 
   const handleOnSubmit = (step: number) => {
     setStep(step + 1);
-    window.localStorage.setItem('step', (step+1).toString());
     console.log('time to show them step two')
   };
 
   const handleReset = () => {
     setStep(1);
-    window.localStorage.setItem(`step ${currRoom}`, (step+1).toString());
-    console.log('step reset to 0')
+    console.log('step reset to 1')
   };
 
   const renderSwitch = (step: number) => {

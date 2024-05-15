@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import { room } from "@prisma/client";
 import { SimpleGrid, Text } from '@chakra-ui/react';
 import {
   Card,
@@ -13,9 +14,12 @@ import {
 import { Button } from "@/components/ui/button"
 import { useRouter } from 'next/navigation';
 
-const Grid = () => {
+interface GridProps {
+  rooms: room[];
+}
+
+const Grid = ({rooms}: GridProps) => {
   const router = useRouter();
-  const rooms = [112, 334, 6, 54];
 
   const handleOnClick = (e: number) => {
     router.push(`/rooms/` + e);
@@ -28,17 +32,17 @@ const Grid = () => {
       spacing={6}
       className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
     >
-      {rooms.map((room) => (
-        <Card key={room}>
+      {rooms.map((room: room) => (
+        <Card key={room.id}>
           <CardHeader>
-            <CardTitle>{room}</CardTitle>
+            <CardTitle>{room.roomNum}</CardTitle>
             <CardDescription>Card Description</CardDescription>
           </CardHeader>
           <CardContent>
             <p>Card Content</p>
           </CardContent>
           <CardFooter>
-          <Button onClick={() => handleOnClick(room)}>Select</Button>
+          <Button onClick={() => handleOnClick(room.id)}>Select</Button>
           </CardFooter>
         </Card>
       ))}
