@@ -4,16 +4,15 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button"
 
-// interface ProtocolProps {
-//   currRoom: number;
-// }
+interface ProtocolProps {
+  currRoom: number;
+}
 
-const Protocol = ({ params }: { params: { room: number } }) => {
+const Protocol = (currRoom: ProtocolProps) => {
 
-  const initialStep = window.localStorage.getItem('step') || 1;
+  const initialStep = localStorage.getItem(`step ${currRoom}`) || 1;
 
   const [step, setStep] = useState(Number(initialStep));
-  const router = useRouter();
 
   const handleOnSubmit = (step: number) => {
     setStep(step + 1);
@@ -23,7 +22,7 @@ const Protocol = ({ params }: { params: { room: number } }) => {
 
   const handleReset = () => {
     setStep(1);
-    window.localStorage.setItem('step', (step+1).toString());
+    window.localStorage.setItem(`step ${currRoom}`, (step+1).toString());
     console.log('step reset to 0')
   };
 
