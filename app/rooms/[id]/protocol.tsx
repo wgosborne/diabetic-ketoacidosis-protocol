@@ -5,6 +5,8 @@ import prisma from '@/prisma/client';
 import { room } from "@prisma/client";
 import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button"
+import { PUT } from '@/app/api/room/route';
+
 
 interface ProtocolProps {
   currRoom: room;
@@ -16,13 +18,17 @@ const Protocol = ({currRoom}: ProtocolProps) => {
 
   const handleOnSubmit = (step: number) => {
     setStep(step + 1);
+    PUT(currRoom, step)
     console.log('time to show them step two')
   };
 
   const handleReset = () => {
     setStep(1);
+    PUT(currRoom, step)
     console.log('step reset to 1')
   };
+
+  //trying to figure out where to update it
 
   const renderSwitch = (step: number) => {
     switch(step) {
