@@ -5,7 +5,8 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger
+  SheetTrigger,
+  SheetClose
 } from '@/components/ui/sheet';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -51,7 +52,7 @@ const MySheet = ({ potassium, onNew }: SheetProps) => {
               onChange={handleChange}
             />
             {/* may not need the button because it doesnt do anything */}
-            <Button type="submit" onClick={() => console.log('done')}>Done</Button>
+            <SheetClose />
         </SheetContent>
       </Sheet>
     </div>
