@@ -6,6 +6,9 @@ import axios from 'axios';
 import { room } from "@prisma/client";
 import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button"
+import StepOne from './steps/stepOne';
+import StepTwo from './steps/stepTwo';
+import StepThree from './steps/stepThree';
 
 
 interface ProtocolProps {
@@ -44,15 +47,15 @@ const Protocol = ({currRoom}: ProtocolProps) => {
     switch(step) {
       case 1:
         return (
-          <p>step {step}</p>
+          <StepOne />
         )
       case 2:
         return (
-          <p>step 2</p>
+          <StepTwo />
         )
       case 3:
         return (
-          <p>step 3</p>
+          <StepThree />
         )
       case 4:
         return (
