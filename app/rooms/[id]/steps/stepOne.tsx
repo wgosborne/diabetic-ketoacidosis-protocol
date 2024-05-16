@@ -1,4 +1,6 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import MySheet from '../components/sheet';
 import {
   Table,
@@ -20,30 +22,33 @@ import {
 
 
 const StepOne = () => {
+
+  const [potassium, setPotassium] = useState(0);
+
   return (
     <div>
-      <MySheet />
+      <MySheet potassium={potassium} onChange={setPotassium}/>
       <Card>
         <CardHeader>
-          <CardTitle>A</CardTitle>
-          <CardDescription>Card Description</CardDescription>
+          <CardTitle>Fluid Resuscitation</CardTitle>
+          {/* <CardDescription>Fluid Resuscitation & Maintenance Fluids</CardDescription> */}
         </CardHeader>
         <CardContent>
-          <p>Card Content</p>
+          <p>Give one (1) or two (2) liters of Normal Saline bolus per Provider order</p>
         </CardContent>
-        <CardFooter>
+        {/* <CardFooter>
           <p>Card Footer</p>
-        </CardFooter>
+        </CardFooter> */}
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>B</CardTitle>
-          <CardDescription>Card Description</CardDescription>
+          <CardTitle>Maintenance Fluids</CardTitle>
+          {/* <CardDescription>Card Description</CardDescription> */}
         </CardHeader>
         <CardContent>
           <Table>
-            <TableCaption>Heres what to do next</TableCaption>
+            {/* <TableCaption>Heres what to do next</TableCaption> */}
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px]">Invoice</TableHead>
@@ -55,7 +60,7 @@ const StepOne = () => {
             <TableBody>
               <TableRow>
                 <TableCell className="font-medium">INV001</TableCell>
-                <TableCell>Paid</TableCell>
+                <TableCell>{potassium}</TableCell>
                 <TableCell>Credit Card</TableCell>
                 <TableCell className="text-right">$250.00</TableCell>
               </TableRow>
