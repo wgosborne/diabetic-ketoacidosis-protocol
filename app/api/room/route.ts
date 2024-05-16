@@ -1,16 +1,18 @@
-import prisma from "@/prisma/client";
-import { NextRequest, NextResponse } from "next/server";
-import { room } from "@prisma/client";
+import { NextRequest, NextResponse } from 'next/server';
+import prisma from '@/prisma/client';
 
-export async function PUT(currRoom: room, currStep: number) {
-   prisma.room.update({
-    where: {
-      id: currRoom.id,
-    },
-    data: {
-      step: currStep,
-    },
-  })
+export async function GET(request: NextRequest) {
+    const rooms = await prisma.room.findMany({ orderBy: { id: 'asc' } });
+    return NextResponse.json(rooms);
+ }
+
+export async function POST(request: NextRequest) {
+
+  const body = await request.json();
+
+  const newRoom = await prisma.room.create({
+    data: { step: body.step, roomNum: body.roomNum },
+  });
+
+  return NextResponse.json(newRoom, { status: 201 });
 }
-
-

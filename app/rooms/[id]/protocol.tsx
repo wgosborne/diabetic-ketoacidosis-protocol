@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import prisma from '@/prisma/client';
+import axios from 'axios';
 import { room } from "@prisma/client";
 import { useRouter } from 'next/navigation';
 import { Button } from "@/components/ui/button"
-import { PUT } from '@/app/api/room/route';
 
 
 interface ProtocolProps {
@@ -16,17 +16,30 @@ const Protocol = ({currRoom}: ProtocolProps) => {
 
   const [step, setStep] = useState(currRoom.step || 1);
 
-  const handleOnSubmit = (step: number) => {
+  const handleOnSubmit = (async(step: number) => {
     setStep(step + 1);
-    PUT(currRoom, step)
+    //@ts-ignore
+    //currRoom.step += 1
+    const data = {
+      step: 2
+    }
+    try {
+      await axios.patch('/api/room/' + currRoom.id, (data));
+    } catch (error) {
+      console.log(error)
+    }
     console.log('time to show them step two')
-  };
+  });
 
-  const handleReset = () => {
+  const handleReset = (async() => {
     setStep(1);
-    PUT(currRoom, step)
+    try {
+      await axios.patch('/api/room/' + currRoom.id, 0);
+    } catch (error) {
+      console.log(error)
+    }
     console.log('step reset to 1')
-  };
+  });
 
   //trying to figure out where to update it
 
