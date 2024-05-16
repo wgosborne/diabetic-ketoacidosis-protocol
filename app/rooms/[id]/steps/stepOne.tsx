@@ -26,7 +26,7 @@ const StepOne = () => {
   const createAdjustment = (potassium: number) => {
     if (potassium >= 5.5) {
       return 'plain fluid without KCI.';
-    } else if (potassium < 5.5) {
+    } else if (potassium < 5.5 && potassium >= 4) {
       return '20 mEq KCI per liter of IV fluid.';
     } else if (potassium < 4) {
       return '40 mEq KCI per liter of IV fluid.';
