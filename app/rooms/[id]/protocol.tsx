@@ -34,7 +34,7 @@ const Protocol = ({currRoom}: ProtocolProps) => {
     switch(step) {
       case 1:
         return (
-          <p>step 1</p>
+          <p>step {step}</p>
         )
       case 2:
         return (
