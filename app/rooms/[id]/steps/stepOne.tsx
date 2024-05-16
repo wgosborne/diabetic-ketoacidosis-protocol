@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
 import MySheet from '../components/sheet';
@@ -17,37 +17,72 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-
+  CardTitle
+} from '@/components/ui/card';
 
 const StepOne = () => {
-
   const [potassium, setPotassium] = useState(0);
+
+  const createAdjustment = (potassium: number) => {
+    if (potassium >= 5.5) {
+      return 'plain fluid without KCI.';
+    } else if (potassium < 5.5) {
+      return '20 mEq KCI per liter of IV fluid.';
+    } else if (potassium < 4) {
+      return '40 mEq KCI per liter of IV fluid.';
+    } else {
+      return <p>ALERT!</p>;
+    }
+  };
 
   return (
     <div>
-      <MySheet potassium={potassium} onNew={setPotassium}/>
-      <Card>
-        <CardHeader>
-          <CardTitle>Fluid Resuscitation</CardTitle>
-          {/* <CardDescription>Fluid Resuscitation & Maintenance Fluids</CardDescription> */}
-        </CardHeader>
-        <CardContent>
-          <p>Give one (1) or two (2) liters of Normal Saline bolus per Provider order</p>
-        </CardContent>
-        {/* <CardFooter>
+      <div className='mb-3'>
+        <MySheet potassium={potassium} onNew={setPotassium} />
+      </div>
+
+      <div className='mb-3'>
+        <Card>
+          <CardHeader>
+            <CardTitle>Fluid Resuscitation</CardTitle>
+            {/* <CardDescription>Fluid Resuscitation & Maintenance Fluids</CardDescription> */}
+          </CardHeader>
+          <CardContent>
+            <p>
+              Give one (1) or two (2) liters of Normal Saline bolus per Provider
+              order
+            </p>
+          </CardContent>
+          {/* <CardFooter>
           <p>Card Footer</p>
         </CardFooter> */}
-      </Card>
-      <Card>
-        <CardHeader>
-          <CardTitle>Maintenance Fluids</CardTitle>
-          {/* <CardDescription>Card Description</CardDescription> */}
-        </CardHeader>
-        <CardContent>
-          <Table>
-            {/* <TableCaption>Heres what to do next</TableCaption> */}
+        </Card>
+      </div>
+
+      <div className='mb-3'>
+        <Card>
+          <CardHeader>
+            <CardTitle>Maintenance Fluids</CardTitle>
+            {/* <CardDescription>Card Description</CardDescription> */}
+          </CardHeader>
+          <CardContent>
+            Start maintenance fluids of normal saline at 200 mL/hour with{' '}
+            {createAdjustment(potassium)}
+          </CardContent>
+          {/* <CardFooter>
+          <p>Card Footer</p>
+        </CardFooter> */}
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+export default StepOne;
+
+{
+  /* <Table>
+            <TableCaption>Heres what to do next</TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px]">Invoice</TableHead>
@@ -64,14 +99,5 @@ const StepOne = () => {
                 <TableCell className="text-right">$250.00</TableCell>
               </TableRow>
             </TableBody>
-          </Table>
-        </CardContent>
-        <CardFooter>
-          <p>Card Footer</p>
-        </CardFooter>
-      </Card>
-    </div>
-  );
-};
-
-export default StepOne;
+          </Table> */
+}

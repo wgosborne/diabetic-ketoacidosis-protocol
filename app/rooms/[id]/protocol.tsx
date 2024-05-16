@@ -79,7 +79,7 @@ const Protocol = ({currRoom}: ProtocolProps) => {
   return (
     <div className=''>
       {renderSwitch(step)}
-      <Button onClick={() => handleOnSubmit(step)}>Submit</Button>
+      <Button onClick={() => handleOnSubmit(step)} className='mr-3'>Submit</Button>
       <Button onClick={() => handleReset()}>Reset</Button>
     </div>
   );

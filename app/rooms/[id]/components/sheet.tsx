@@ -32,7 +32,9 @@ const MySheet = ({ potassium, onNew }: SheetProps) => {
   return (
     <div>
       <Sheet>
-        <SheetTrigger>Start Here</SheetTrigger>
+        <SheetTrigger>
+            <Button>Start Here</Button>
+        </SheetTrigger>
         <SheetContent>
           <SheetHeader>
             <SheetTitle>Potassium Primary Fluid Adjustment</SheetTitle>
