@@ -27,7 +27,7 @@ const StepOne = () => {
 
   return (
     <div>
-      <MySheet potassium={potassium} onChange={setPotassium}/>
+      <MySheet potassium={potassium} onNew={setPotassium}/>
       <Card>
         <CardHeader>
           <CardTitle>Fluid Resuscitation</CardTitle>
@@ -40,7 +40,6 @@ const StepOne = () => {
           <p>Card Footer</p>
         </CardFooter> */}
       </Card>
-
       <Card>
         <CardHeader>
           <CardTitle>Maintenance Fluids</CardTitle>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Sheet,
   SheetContent,
@@ -10,13 +10,24 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
+import { useForm } from 'react-hook-form';
 
 interface SheetProps {
   potassium: number;
-  onChange: (value: number) => void;
+  onNew: (value: number) => void;
 }
 
-const MySheet = ({ potassium, onChange }: SheetProps) => {
+
+const MySheet = ({ potassium, onNew }: SheetProps) => {
+
+  const [inputVal, setInputVal] = useState(0);
+
+  const handleChange = (event) => {
+    console.log(event.target.value)
+    onNew(event.target.value);
+    console.log(potassium);
+  };
+
   return (
     <div>
       <Sheet>
@@ -30,9 +41,14 @@ const MySheet = ({ potassium, onChange }: SheetProps) => {
             </SheetDescription>
           </SheetHeader>
           {/* figure out how to add the apostrophe */}
-          <Label>Enter the patients K+ level </Label>
-          <Input type="potassium" placeholder="Enter as a decimal number" />
-          <Button onClick={() => onChange(5.5)}></Button>
+            <Label>Enter the patients K+ level </Label>
+            <Input
+              type="number"
+              placeholder="Enter as a decimal number"
+              onChange={handleChange}
+            />
+            {/* may not need the button because it doesnt do anything */}
+            <Button type="submit" onClick={() => console.log('done')}>Done</Button>
         </SheetContent>
       </Sheet>
     </div>
