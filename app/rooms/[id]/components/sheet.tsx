@@ -22,7 +22,8 @@ const MySheet = ({ potassium, onNew }: SheetProps) => {
 
   const [inputVal, setInputVal] = useState(0);
 
-  const handleChange = (event) => {
+  //change this to not be any once I figure out what it is
+  const handleChange = (event: any) => {
     console.log(event.target.value)
     onNew(event.target.value);
     console.log(potassium);
