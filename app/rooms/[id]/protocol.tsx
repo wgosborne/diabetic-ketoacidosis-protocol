@@ -20,11 +20,8 @@ const Protocol = ({currRoom}: ProtocolProps) => {
     setStep(step + 1);
     //@ts-ignore
     //currRoom.step += 1
-    const data = {
-      step: 2
-    }
     try {
-      await axios.patch('/api/room/' + currRoom.id, (data));
+      await axios.patch('/api/room/' + currRoom.id, (step+1));
     } catch (error) {
       console.log(error)
     }
@@ -34,7 +31,7 @@ const Protocol = ({currRoom}: ProtocolProps) => {
   const handleReset = (async() => {
     setStep(1);
     try {
-      await axios.patch('/api/room/' + currRoom.id, 0);
+      await axios.patch('/api/room/' + currRoom.id, 1);
     } catch (error) {
       console.log(error)
     }

@@ -15,10 +15,11 @@ export async function PATCH(request: NextRequest,
 
     const updatedRoom = await prisma.room.update({
     where: {
+        //@ts-ignore
       id: parseInt(params.id),
     },
     data: {
-      step: parseInt(body.step),
+      step: parseInt(body),
     },
   });
 
