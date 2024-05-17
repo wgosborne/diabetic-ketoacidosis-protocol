@@ -73,6 +73,7 @@ const StepThree = ({
     <div>
       <div className="mb-3">
         <SheetThree
+          currRoom={currRoom}
           potassium={potassium}
           weight={weight}
           onNewPotassium={setPotassium}

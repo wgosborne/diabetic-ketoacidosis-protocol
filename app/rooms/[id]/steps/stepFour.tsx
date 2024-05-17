@@ -23,6 +23,7 @@ const StepFour = ({
   const createAdjustment = (rate: number, weight: number) => {
     switch (true) {
       case weight < 39.5:
+        setRate(-1);
         return false;
       case weight < 44.5:
         return '4';
@@ -78,7 +79,7 @@ const StepFour = ({
   return (
     <div>
       <div className="mb-3">
-        <SheetFour weight={weight} onNewWeight={setWeight} />
+        <SheetFour currRoom={currRoom} weight={weight} onNewWeight={setWeight} />
       </div>
 
       <div className="mb-3">

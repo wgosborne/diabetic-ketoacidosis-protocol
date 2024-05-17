@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import {
   Sheet,
   SheetContent,
@@ -12,8 +13,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { useForm } from 'react-hook-form';
+import { room } from '@prisma/client';
 
 interface SheetProps {
+  currRoom: room;
   potassium: number;
   weight: number;
   onNewPotassium: (value: number) => void;
@@ -21,20 +24,31 @@ interface SheetProps {
 }
 
 const SheetThree = ({
+  currRoom,
   potassium,
   weight,
   onNewPotassium,
   onNewWeight
 }: SheetProps) => {
   //change this to not be any once I figure out what it is
-  const handlePotassiumChange = (event: any) => {
-    console.log(event.target.value);
+  const handlePotassiumChange = async (event: any) => {
     onNewPotassium(event.target.value);
+    currRoom.potassium = event.target.value;
+    try {
+      await axios.patch('/api/room/' + currRoom.id, currRoom);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleWeightChange = (event: any) => {
-    console.log(event.target.value);
+  const handleWeightChange = async (event: any) => {
     onNewWeight(event.target.value);
+    currRoom.weight = event.target.value;
+    try {
+      await axios.patch('/api/room/' + currRoom.id, currRoom);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
