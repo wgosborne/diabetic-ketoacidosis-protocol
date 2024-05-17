@@ -4,9 +4,15 @@ import React, { useState } from 'react';
 import SheetFour from '../components/sheetStepFour';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-const StepFour = () => {
-  const [rate, setRate] = useState(-1);
-  const [weight, setWeight] = useState(-1);
+interface StepFourProps {
+    weight: number;
+    setWeight: (value: number) => void;
+    rate: number;
+    setRate: (value: number) => void;
+    
+  }
+
+const StepFour = ({weight, setWeight, rate, setRate}: StepFourProps) => {
 
   const createAdjustment = (rate: number, weight: number) => {
     switch (true) {

@@ -20,8 +20,12 @@ import {
   CardTitle
 } from '@/components/ui/card';
 
-const StepOne = () => {
-  const [potassium, setPotassium] = useState(-1);
+interface StepOneProps {
+  potassium: number;
+  setPotassium: (value: number) => void;
+}
+
+const StepOne = ({potassium, setPotassium}: StepOneProps) => {
 
   const createAdjustment = (potassium: number) => {
     if (potassium >= 5.5) {

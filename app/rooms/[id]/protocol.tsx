@@ -21,6 +21,9 @@ interface ProtocolProps {
 const Protocol = ({currRoom}: ProtocolProps) => {
 
   const [step, setStep] = useState(currRoom.step || 1);
+  const [potassium, setPotassium] = useState(-1);
+  const [weight, setWeight] = useState(-1);
+  const [rate, setRate] = useState(-1);
 
   const handleOnSubmit = (async(step: number) => {
     setStep(step + 1);
@@ -50,7 +53,7 @@ const Protocol = ({currRoom}: ProtocolProps) => {
     switch(step) {
       case 1:
         return (
-          <StepOne />
+          <StepOne potassium={potassium} setPotassium={setPotassium}/>
         )
       case 2:
         return (
@@ -58,11 +61,11 @@ const Protocol = ({currRoom}: ProtocolProps) => {
         )
       case 3:
         return (
-          <StepThree />
+          <StepThree potassium={potassium} setPotassium={setPotassium} weight={weight} setWeight={setWeight}/>
         )
       case 4:
         return (
-          <StepFour />
+          <StepFour weight={weight} setWeight={setWeight} rate={rate} setRate={setRate}/>
         )
       case 5:
         return (
