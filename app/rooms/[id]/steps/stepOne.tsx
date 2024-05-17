@@ -21,7 +21,7 @@ import {
 } from '@/components/ui/card';
 
 const StepOne = () => {
-  const [potassium, setPotassium] = useState(0);
+  const [potassium, setPotassium] = useState(-1);
 
   const createAdjustment = (potassium: number) => {
     if (potassium >= 5.5) {

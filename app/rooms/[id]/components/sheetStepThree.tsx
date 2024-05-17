@@ -15,14 +15,26 @@ import { useForm } from 'react-hook-form';
 
 interface SheetProps {
   potassium: number;
-  onNew: (value: number) => void;
+  weight: number;
+  onNewPotassium: (value: number) => void;
+  onNewWeight: (value: number) => void;
 }
 
-const MySheet = ({ potassium, onNew }: SheetProps) => {
+const SheetThree = ({
+  potassium,
+  weight,
+  onNewPotassium,
+  onNewWeight
+}: SheetProps) => {
   //change this to not be any once I figure out what it is
-  const handleChange = (event: any) => {
+  const handlePotassiumChange = (event: any) => {
     console.log(event.target.value);
-    onNew(event.target.value);
+    onNewPotassium(event.target.value);
+  };
+
+  const handleWeightChange = (event: any) => {
+    console.log(event.target.value);
+    onNewWeight(event.target.value);
   };
 
   return (
@@ -42,13 +54,19 @@ const MySheet = ({ potassium, onNew }: SheetProps) => {
             className="mt-2 mb-4"
             type="number"
             placeholder="Enter as a decimal number"
-            onChange={handleChange}
+            onChange={handlePotassiumChange}
           />
-          {/* may not need the button because it doesnt do anything */}
+          <Label className="mb-2">Enter the patients weight </Label>
+          <Input
+            className="mt-2 mb-4"
+            type="number"
+            placeholder="Enter in kilograms"
+            onChange={handleWeightChange}
+          />
         </SheetContent>
       </Sheet>
     </div>
   );
 };
 
-export default MySheet;
+export default SheetThree;

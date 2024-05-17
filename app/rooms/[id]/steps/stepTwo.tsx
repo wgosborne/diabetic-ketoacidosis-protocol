@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Card,
   CardContent,
@@ -11,13 +11,14 @@ import {
 const StepTwo = () => {
   return (
     <div>
-      <Card>
+      <div>
+        <Card>
           <CardHeader>
             <CardTitle>Initial Laboratory Orders</CardTitle>
             {/* <CardDescription>Fluid Resuscitation & Maintenance Fluids</CardDescription> */}
           </CardHeader>
           <CardContent>
-            <ol className='list-decimal ml-4'>
+            <ol className="list-decimal ml-4">
               <li>CBC</li>
               <li>CMP</li>
               <li>Serum Ketones</li>
@@ -31,8 +32,28 @@ const StepTwo = () => {
           <p>Card Footer</p>
         </CardFooter> */}
         </Card>
+      </div>
+      <div>
+        <Card>
+          <CardHeader>
+            <CardTitle>Recurring Laboratory Orders</CardTitle>
+            {/* <CardDescription>Fluid Resuscitation & Maintenance Fluids</CardDescription> */}
+          </CardHeader>
+          <CardContent>
+            <ol className="list-decimal ml-4">
+              <li>BMP q 4 hours (every 4 hours) until the  Gap is less than or equal to 16</li>
+              <li>Phosphorous q 4 hours (every 4 hours) x3</li>
+              <li>Serum Ketones q 4 hours (every 4 hours) x3</li>
+              <li>POC Blood Glucose q 1 hour (every hour) until off insulin drip</li>
+            </ol>
+          </CardContent>
+          {/* <CardFooter>
+              <p>Card Footer</p>
+            </CardFooter> */}
+        </Card>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default StepTwo;
