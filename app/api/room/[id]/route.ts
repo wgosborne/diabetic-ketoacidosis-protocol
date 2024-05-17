@@ -19,7 +19,7 @@ export async function PATCH(request: NextRequest,
       id: parseInt(params.id),
     },
     data: {
-      step: parseInt(body),
+      step: parseInt(body.step),
     },
   });
 

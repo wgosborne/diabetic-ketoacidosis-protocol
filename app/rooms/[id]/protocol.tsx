@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
 import React, { useState } from 'react';
 import prisma from '@/prisma/client';
 import axios from 'axios';
-import { room } from "@prisma/client";
+import { room } from '@prisma/client';
 import { useRouter } from 'next/navigation';
-import { Button } from "@/components/ui/button"
+import { Button } from '@/components/ui/button';
 import StepOne from './steps/stepOne';
 import StepTwo from './steps/stepTwo';
 import StepThree from './steps/stepThree';
@@ -13,86 +13,85 @@ import StepFour from './steps/stepFour';
 import StepFive from './steps/stepFive';
 import StepSix from './steps/stepSix';
 
-
 interface ProtocolProps {
   currRoom: room;
 }
 
-const Protocol = ({currRoom}: ProtocolProps) => {
-
+const Protocol = ({ currRoom }: ProtocolProps) => {
   const [step, setStep] = useState(currRoom.step || 1);
   const [potassium, setPotassium] = useState(-1);
   const [weight, setWeight] = useState(-1);
   const [rate, setRate] = useState(-1);
 
-  const handleOnSubmit = (async(step: number) => {
+  const handleOnSubmit = async (step: number) => {
     setStep(step + 1);
-    //@ts-ignore
-    //currRoom.step += 1
+    currRoom.step = step + 1;
     try {
-      await axios.patch('/api/room/' + currRoom.id, (step+1));
+      await axios.patch('/api/room/' + currRoom.id, currRoom);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-    console.log('time to show them step two')
-  });
+    console.log('time to show them step two');
+  };
 
-  const handleReset = (async() => {
+  const handleReset = async () => {
     setStep(1);
+    currRoom.step = 1;
     try {
-      await axios.patch('/api/room/' + currRoom.id, 1);
+      await axios.patch('/api/room/' + currRoom.id, currRoom);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-    console.log('step reset to 1')
-  });
+    console.log('step reset to 1');
+  };
 
   //trying to figure out where to update it
 
   const renderSwitch = (step: number) => {
-    switch(step) {
+    switch (step) {
       case 1:
-        return (
-          <StepOne potassium={potassium} setPotassium={setPotassium}/>
-        )
+        return <StepOne potassium={potassium} setPotassium={setPotassium} />;
       case 2:
-        return (
-          <StepTwo />
-        )
+        return <StepTwo />;
       case 3:
         return (
-          <StepThree potassium={potassium} setPotassium={setPotassium} weight={weight} setWeight={setWeight}/>
-        )
+          <StepThree
+            potassium={potassium}
+            setPotassium={setPotassium}
+            weight={weight}
+            setWeight={setWeight}
+          />
+        );
       case 4:
         return (
-          <StepFour weight={weight} setWeight={setWeight} rate={rate} setRate={setRate}/>
-        )
+          <StepFour
+            weight={weight}
+            setWeight={setWeight}
+            rate={rate}
+            setRate={setRate}
+          />
+        );
       case 5:
-        return (
-          <StepFive />
-        )
+        return <StepFive />;
       case 6:
-        return (
-          <StepSix />
-        )
+        return <StepSix />;
       default:
-        return (
-          <p>default</p>
-        )
+        return <p>default</p>;
     }
-  }
+  };
 
   return (
-    <div className=''>
+    <div className="">
       {renderSwitch(step)}
-      <Button onClick={() => handleOnSubmit(step)} className='mr-3'>Next Step</Button>
+      <Button onClick={() => handleOnSubmit(step)} className="mr-3">
+        Next Step
+      </Button>
       <Button onClick={() => handleReset()}>Step One</Button>
     </div>
   );
 };
 
 export default Protocol;
-
 
 // import {
 //   Carousel,
@@ -104,7 +103,8 @@ export default Protocol;
 // import { Card, CardContent } from '@/components/ui/card';
 // import Fluids from './fluids';
 
-{/* <Carousel className="w-full max-w-xs">
+{
+  /* <Carousel className="w-full max-w-xs">
         <CarouselContent className="">
           <CarouselItem key={'1'} className="">
             <Card>
@@ -134,4 +134,5 @@ export default Protocol;
             </Card>
           </CarouselItem>
         </CarouselContent>
-      </Carousel> */}
+      </Carousel> */
+}
