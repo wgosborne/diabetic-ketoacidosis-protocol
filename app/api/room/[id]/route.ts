@@ -20,6 +20,9 @@ export async function PATCH(request: NextRequest,
     },
     data: {
       step: parseInt(body.step),
+      potassium: parseFloat(body.potassium),
+      rate: parseFloat(body.rate),
+      weight: parseFloat(body.weight),
     },
   });
 
