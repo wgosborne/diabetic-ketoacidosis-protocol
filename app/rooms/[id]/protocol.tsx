@@ -50,12 +50,19 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
   const renderSwitch = (step: number) => {
     switch (step) {
       case 1:
-        return <StepOne potassium={potassium} setPotassium={setPotassium} />;
+        return (
+          <StepOne
+            currRoom={currRoom}
+            potassium={potassium}
+            setPotassium={setPotassium}
+          />
+        );
       case 2:
         return <StepTwo />;
       case 3:
         return (
           <StepThree
+            currRoom={currRoom}
             potassium={potassium}
             setPotassium={setPotassium}
             weight={weight}
@@ -65,6 +72,7 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
       case 4:
         return (
           <StepFour
+            currRoom={currRoom}
             weight={weight}
             setWeight={setWeight}
             rate={rate}

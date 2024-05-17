@@ -19,13 +19,15 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
+import { room } from '@prisma/client';
 
 interface StepOneProps {
+  currRoom: room;
   potassium: number;
   setPotassium: (value: number) => void;
 }
 
-const StepOne = ({potassium, setPotassium}: StepOneProps) => {
+const StepOne = ({currRoom, potassium, setPotassium}: StepOneProps) => {
 
   const createAdjustment = (potassium: number) => {
     if (potassium >= 5.5) {
@@ -42,7 +44,7 @@ const StepOne = ({potassium, setPotassium}: StepOneProps) => {
   return (
     <div>
       <div className='mb-3'>
-        <MySheet potassium={potassium} onNew={setPotassium} />
+        <MySheet currRoom={currRoom} potassium={potassium} onNew={setPotassium} />
       </div>
 
       <div className='mb-3'>

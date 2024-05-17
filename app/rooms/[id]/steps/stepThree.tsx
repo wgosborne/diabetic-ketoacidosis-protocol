@@ -3,8 +3,10 @@
 import React from 'react';
 import SheetThree from '../components/sheetStepThree';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { room } from '@prisma/client';
 
 interface StepThreeProps {
+  currRoom: room;
   potassium: number;
   setPotassium: (value: number) => void;
   weight: number;
@@ -12,6 +14,7 @@ interface StepThreeProps {
 }
 
 const StepThree = ({
+  currRoom,
   potassium,
   setPotassium,
   weight,

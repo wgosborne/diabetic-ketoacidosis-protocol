@@ -3,17 +3,23 @@
 import React, { useState } from 'react';
 import SheetFour from '../components/sheetStepFour';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { room } from '@prisma/client';
 
 interface StepFourProps {
-    weight: number;
-    setWeight: (value: number) => void;
-    rate: number;
-    setRate: (value: number) => void;
-    
-  }
+  currRoom: room;
+  weight: number;
+  setWeight: (value: number) => void;
+  rate: number;
+  setRate: (value: number) => void;
+}
 
-const StepFour = ({weight, setWeight, rate, setRate}: StepFourProps) => {
-
+const StepFour = ({
+  currRoom,
+  weight,
+  setWeight,
+  rate,
+  setRate
+}: StepFourProps) => {
   const createAdjustment = (rate: number, weight: number) => {
     switch (true) {
       case weight < 39.5:
@@ -85,12 +91,12 @@ const StepFour = ({weight, setWeight, rate, setRate}: StepFourProps) => {
           </CardHeader>
           <CardContent>
             {createAdjustment(rate, weight) ? (
-              <h2 className='mb-3'>
+              <h2 className="mb-3">
                 Inital insulin infusion rate: {createAdjustment(rate, weight)}{' '}
                 units per hour
               </h2>
             ) : (
-              <h2 className='mb-3'>Weight too low for an infusion rate</h2>
+              <h2 className="mb-3">Weight too low for an infusion rate</h2>
             )}
 
             <ol className="list-decimal ml-4">
