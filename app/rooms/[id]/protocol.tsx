@@ -9,6 +9,9 @@ import { Button } from "@/components/ui/button"
 import StepOne from './steps/stepOne';
 import StepTwo from './steps/stepTwo';
 import StepThree from './steps/stepThree';
+import StepFour from './steps/stepFour';
+import StepFive from './steps/stepFive';
+import StepSix from './steps/stepSix';
 
 
 interface ProtocolProps {
@@ -59,15 +62,15 @@ const Protocol = ({currRoom}: ProtocolProps) => {
         )
       case 4:
         return (
-          <p>step 4</p>
+          <StepFour />
         )
       case 5:
         return (
-          <p>step 5</p>
+          <StepFive />
         )
       case 6:
         return (
-          <p>step 6</p>
+          <StepSix />
         )
       default:
         return (
@@ -79,8 +82,8 @@ const Protocol = ({currRoom}: ProtocolProps) => {
   return (
     <div className=''>
       {renderSwitch(step)}
-      <Button onClick={() => handleOnSubmit(step)} className='mr-3'>Submit</Button>
-      <Button onClick={() => handleReset()}>Reset</Button>
+      <Button onClick={() => handleOnSubmit(step)} className='mr-3'>Next Step</Button>
+      <Button onClick={() => handleReset()}>Step One</Button>
     </div>
   );
 };

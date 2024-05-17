@@ -108,9 +108,9 @@ const StepThree = () => {
         <Card>
           <CardHeader>
             <CardTitle>Insulin Bolus IVP</CardTitle>
-            <CardDescription>
+            {/* <CardDescription>
               {potassium} {weight}
-            </CardDescription>
+            </CardDescription> */}
           </CardHeader>
           <CardContent>
 
