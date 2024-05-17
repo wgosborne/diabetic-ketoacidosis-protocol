@@ -26,50 +26,73 @@ const StepFour = ({
         setRate(-1);
         return false;
       case weight < 44.5:
+        setRate(4)
         return '4';
       case weight < 49.5:
+        setRate(4.5)
         return '4.5';
       case weight < 54.5:
+        setRate(5)
         return '5';
       case weight < 59.5:
+        setRate(5.5)
         return '5.5';
       case weight < 64.5:
+        setRate(6)
         return '6';
       case weight < 69.5:
+        setRate(6.5)
         return '6.5';
       case weight < 74.5:
+        setRate(7)
         return '7';
       case weight < 79.5:
+        setRate(7.5)
         return '7.5';
       case weight < 84.5:
+        setRate(8)
         return '8';
       case weight < 89.5:
+        setRate(8.5)
         return '8.5';
       case weight < 94.5:
+        setRate(9)
         return '9';
       case weight < 99.5:
+        setRate(9.5)
         return '9.5';
       case weight < 104.5:
+        setRate(10)
         return '10';
       case weight < 109.5:
+        setRate(10.5)
         return '10.5';
       case weight < 114.5:
+        setRate(11)
         return '11';
       case weight < 119.5:
+        setRate(11.5)
         return '11.5';
       case weight < 124.5:
+        setRate(12)
         return '12';
       case weight < 129.5:
+        setRate(12.5)
         return '12.5';
       case weight < 134.5:
+        setRate(13)
         return '13';
       case weight < 139.5:
+        setRate(13.5)
         return '13.5';
       case weight < 144.5:
+        setRate(14)
         return '14';
       case weight < 149.5:
+        setRate(14.5)
         return '14.5';
       case weight >= 149.5:
+        setRate(5)
         return '15';
       default:
         return false;
