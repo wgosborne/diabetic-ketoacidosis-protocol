@@ -11,7 +11,7 @@ import {
 const StepTwo = () => {
   return (
     <div>
-      <div>
+      <div className='mb-3'>
         <Card>
           <CardHeader>
             <CardTitle>Initial Laboratory Orders</CardTitle>
@@ -33,7 +33,7 @@ const StepTwo = () => {
         </CardFooter> */}
         </Card>
       </div>
-      <div>
+      <div className='mb-3'>
         <Card>
           <CardHeader>
             <CardTitle>Recurring Laboratory Orders</CardTitle>
