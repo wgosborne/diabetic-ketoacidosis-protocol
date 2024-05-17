@@ -26,11 +26,11 @@ const StepThree = () => {
 
   const createAdjustment = (potassium: number, weight: number) => {
     if (potassium < 3.5) {
-      return 'K+ is below 3.5, hold here';
+      return false;
     } else {
       switch (true) {
         case weight < 39.5:
-          return 'Not heavy enought';
+          return false;
           break;
         case weight < 43.5:
           return '6';
@@ -87,7 +87,7 @@ const StepThree = () => {
           return '23';
           break;
         default:
-          return 'invalid weight entered';
+          return false;
           break;
       }
     }
@@ -113,8 +113,9 @@ const StepThree = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            Give initial insulin bolus IV push ONE time of{' '}
-            {createAdjustment(potassium, weight)} units
+
+          {createAdjustment(potassium, weight) ? <p>Give initial insulin bolus IV push ONE time of{' '}
+            {createAdjustment(potassium, weight)} units</p> : (potassium < 3.5 ? <p>K+ is below 3.5, hold here</p> : <p>Weight below 40kg, hold here</p>)}
           </CardContent>
           {/* <CardFooter>
             <p>Card Footer</p>
