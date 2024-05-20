@@ -102,7 +102,7 @@ const StepFour = ({
   return (
     <div>
       <div className="mb-3">
-        <SheetFour currRoom={currRoom} weight={weight} onNewWeight={setWeight} />
+        <SheetFour currRoom={currRoom} weight={weight} onNewWeight={setWeight} rate={rate} onNewRate={setRate} />
       </div>
 
       <div className="mb-3">
@@ -133,10 +133,10 @@ const StepFour = ({
                 Check Blood Glucose q 1 hour (should have been ordered above)
               </li>
               <li>Check BMP q 4 hours (should have been ordered above)</li>
-              <li>
+              <p className='mt-2 font-bold'>
                 **Any dose greater than 15 units per hour MUST be ordered by
                 Provider**
-              </li>
+              </p>
             </ol>
           </CardContent>
           {/* <CardFooter>
