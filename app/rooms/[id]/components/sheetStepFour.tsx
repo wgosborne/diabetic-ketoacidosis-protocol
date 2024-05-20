@@ -120,7 +120,7 @@ const SheetFour = ({ currRoom, weight, onNewWeight, rate, onNewRate }: SheetProp
       //   onNewRate(14.5)
       //   return '14.5';
       // case weight >= 149.5:
-      //   onNewRate(5)
+      //   onNewRate(15)
       //   return '15';
       // default:
       //   return false;

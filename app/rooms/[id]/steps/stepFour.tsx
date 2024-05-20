@@ -36,7 +36,7 @@ const StepFour = ({
   return (
     <div>
       <div className="mb-3">
-        <SheetFour currRoom={currRoom} weight={weight} onNewWeight={setWeight} rate={rate} onNewRate={setRate} />
+        {/* <SheetFour currRoom={currRoom} weight={weight} onNewWeight={setWeight} rate={rate} onNewRate={setRate} /> */}
       </div>
 
       <div className="mb-3">
