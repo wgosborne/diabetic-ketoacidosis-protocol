@@ -11,6 +11,8 @@ interface StepThreeProps {
   setPotassium: (value: number) => void;
   weight: number;
   setWeight: (value: number) => void;
+  rate: number;
+  setRate: (value: number) => void;
 }
 
 const StepThree = ({
@@ -18,7 +20,9 @@ const StepThree = ({
   potassium,
   setPotassium,
   weight,
-  setWeight
+  setWeight,
+  rate,
+  setRate
 }: StepThreeProps) => {
   const createAdjustment = (potassium: number, weight: number) => {
     if (potassium < 3.5) {
@@ -76,8 +80,10 @@ const StepThree = ({
           currRoom={currRoom}
           potassium={potassium}
           weight={weight}
+          rate={rate}
           onNewPotassium={setPotassium}
           onNewWeight={setWeight}
+          onNewRate={setRate}
         />
       </div>
 

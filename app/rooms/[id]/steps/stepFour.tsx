@@ -22,10 +22,10 @@ const StepFour = ({
 }: StepFourProps) => {
 
     const checkRate = () => {
-        console.log(currRoom.rate);
+        console.log(rate);
 
-        if(currRoom.rate != -1) {
-            return currRoom.rate?.toString();
+        if(rate != -1) {
+            return rate?.toString();
         } else {
             return false;
         }

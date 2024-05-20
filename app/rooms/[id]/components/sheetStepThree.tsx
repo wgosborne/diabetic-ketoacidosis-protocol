@@ -19,16 +19,20 @@ interface SheetProps {
   currRoom: room;
   potassium: number;
   weight: number;
+  rate: number;
   onNewPotassium: (value: number) => void;
   onNewWeight: (value: number) => void;
+  onNewRate: (value: number) => void;
 }
 
 const SheetThree = ({
   currRoom,
   potassium,
   weight,
+  rate,
   onNewPotassium,
-  onNewWeight
+  onNewWeight,
+  onNewRate
 }: SheetProps) => {
   //change this to not be any once I figure out what it is
   const handlePotassiumChange = async (event: any) => {
@@ -42,13 +46,40 @@ const SheetThree = ({
   };
 
   const handleWeightChange = async (event: any) => {
-    onNewWeight(event.target.value);
-    currRoom.weight = event.target.value;
-    try {
-      await axios.patch('/api/room/' + currRoom.id, currRoom);
-    } catch (error) {
-      console.log(error);
-    }
+    const currWeight = event.target.value;
+    onNewWeight(currWeight);
+    currRoom.weight = currWeight;
+
+    switch (true) {
+      case currWeight < 39.5:
+        onNewRate(-1);
+        currRoom.rate = -1;
+        try {
+          await axios.patch('/api/room/' + currRoom.id, currRoom);
+        } catch (error) {
+          console.log(error);
+        }
+        // return false;
+      case currWeight < 44.5:
+        onNewRate(4);
+        currRoom.rate = 4;
+        try {
+          await axios.patch('/api/room/' + currRoom.id, currRoom);
+        } catch (error) {
+          console.log(error);
+        }
+        break;
+      default:
+        onNewRate(100);
+        currRoom.rate = 100;
+        try {
+          await axios.patch('/api/room/' + currRoom.id, currRoom);
+        } catch (error) {
+          console.log(error);
+        }
+        break;
+
+    };
   };
 
   return (

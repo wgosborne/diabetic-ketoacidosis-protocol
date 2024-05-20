@@ -76,6 +76,8 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
             setPotassium={setPotassium}
             weight={weight}
             setWeight={setWeight}
+            rate={rate}
+            setRate={setRate}
           />
         );
       case 4:
