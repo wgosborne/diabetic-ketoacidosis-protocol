@@ -20,9 +20,16 @@ interface ProtocolProps {
 const Protocol = ({ currRoom }: ProtocolProps) => {
   const [step, setStep] = useState(currRoom.step || 1);
   const [potassium, setPotassium] = useState(-1);
+  const [anionGap, setAnionGap] = useState(-1);
   const [weight, setWeight] = useState(-1);
   const [rate, setRate] = useState(-1);
   const [bloodGlucose, setBloodGlucose] = useState(-1);
+  const [BMPqTime, setBMPqTime] = useState(null);
+  const [PqTime, setPqTime] = useState(null); //phosphorus q time
+  const [PqCount, setPqCount] = useState(null); //phosphorus q count
+  const [sKqTime, setsKqTime] = useState(null); //Serum Ketones q time
+  const [sKqCount, setsKqCount] = useState(null); //Serum Ketones q count
+  const [POCBloodGqTime, setPOCBloodGqTime] = useState(null); //POC Blood Glucose q time
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {

@@ -8,11 +8,18 @@ datasource db {
 }
 
 model room {
-  id           Int    @id @default(autoincrement())
-  step         Int?
-  roomNum      Int?
-  potassium    Float?
-  weight       Float?
-  rate         Float?
-  bloodGlucose Float?
+  id             Int    @id @default(autoincrement())
+  step           Int?
+  roomNum        Int?
+  potassium      Float?
+  anionGap       Float?
+  weight         Float?
+  rate           Float?
+  bloodGlucose   Float?
+  BMPqTime       Float?
+  PqTime         Float?
+  PqCount        Float?
+  sKqTime        Float?
+  sKqCount       Float?
+  POCBloodGqTime Float?
 }

@@ -58,6 +58,7 @@ const StepOne = ({currRoom, potassium, setPotassium}: StepOneProps) => {
               Give one (1) or two (2) liters of Normal Saline bolus per Provider
               order
             </p>
+            
           </CardContent>
           {/* <CardFooter>
           <p>Card Footer</p>

@@ -21,9 +21,16 @@ export async function PATCH(request: NextRequest,
     data: {
       step: parseInt(body.step),
       potassium: parseFloat(body.potassium),
+      anionGap: parseInt(body.anionGap),
       rate: parseFloat(body.rate),
       weight: parseFloat(body.weight),
       bloodGlucose: parseFloat(body.bloodGlucose),
+      BMPqTime: parseFloat(body.BMPqTime),
+      PqTime: parseFloat(body.PqTime),
+      PqCount: parseFloat(body.PqCount),
+      sKqTime: parseFloat(body.sKqTime),
+      sKqCount: parseFloat(body.sKqCount),
+      POCBloodGqTime:parseFloat(body.POCBloodGqTime)
     },
   });
 
