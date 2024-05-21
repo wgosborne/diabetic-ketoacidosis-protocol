@@ -19,18 +19,13 @@ const StepFour = ({
   rate,
   setRate
 }: StepFourProps) => {
-
-    const checkRate = () => {
-        console.log(rate);
-
-        if(rate != -1) {
-            return rate?.toString();
-        } else {
-            return false;
-        }
-
-
+  const checkRate = () => {
+    if (rate != -1) {
+      return rate?.toString();
+    } else {
+      return false;
     }
+  };
 
   return (
     <div>
@@ -45,8 +40,7 @@ const StepFour = ({
           <CardContent>
             {checkRate() ? (
               <h2 className="mb-3">
-                Inital insulin infusion rate: {checkRate()}{' '}
-                units per hour
+                Inital insulin infusion rate: {checkRate()} units per hour
               </h2>
             ) : (
               <h2 className="mb-3">Weight too low for an infusion rate</h2>
@@ -62,7 +56,7 @@ const StepFour = ({
                 Check Blood Glucose q 1 hour (should have been ordered above)
               </li>
               <li>Check BMP q 4 hours (should have been ordered above)</li>
-              <p className='mt-2 font-bold'>
+              <p className="mt-2 font-bold">
                 **Any dose greater than 15 units per hour MUST be ordered by
                 Provider**
               </p>

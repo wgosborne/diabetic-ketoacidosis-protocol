@@ -11,7 +11,6 @@ export async function PATCH(request: NextRequest,
     { params }: { params: { id: number } }) {
 
     const body = await request.json();
-    console.log(body)
 
     const updatedRoom = await prisma.room.update({
     where: {

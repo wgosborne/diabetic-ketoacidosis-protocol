@@ -6,6 +6,7 @@ import axios from 'axios';
 import { room } from '@prisma/client';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import Recurring from './components/recurringOrders';
 import StepOne from './steps/stepOne';
 import StepTwo from './steps/stepTwo';
 import StepThree from './steps/stepThree';
@@ -48,7 +49,6 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
     } catch (error) {
       console.log(error);
     }
-    console.log('time to show them step two');
   };
 
   const handleReset = async () => {
@@ -59,7 +59,6 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
     } catch (error) {
       console.log(error);
     }
-    console.log('step reset to 1');
   };
 
   //trying to figure out where to update it
@@ -122,6 +121,15 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
   return (
     <div className="">
       {renderSwitch(step)}
+      <Recurring
+        currRoom={currRoom}
+        potassium={potassium}
+        setPotassium={setPotassium}
+        weight={weight}
+        setWeight={setWeight}
+        rate={rate}
+        setRate={setRate}
+      />
       <Button onClick={() => handleOnSubmit(step)} className="mr-3">
         Next Step
       </Button>
