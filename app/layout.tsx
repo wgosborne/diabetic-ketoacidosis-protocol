@@ -8,8 +8,8 @@ import NavBar from './navbar';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'Diabetic Ketoaddosis Protocol',
-  description: 'Hampton Regional by Wagner Osborne'
+  title: 'Diabetic Ketoacidosis Protocol',
+  description: 'Made for Hampton Regional by Wagner Osborne'
 };
 
 export default function RootLayout({

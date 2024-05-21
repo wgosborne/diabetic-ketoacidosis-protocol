@@ -36,6 +36,8 @@ const StepFive = ({
             ) : (
               <h2 className="mb-3">Weight too low for an infusion rate</h2>
             )} */}
+            <p>Rate: {rate}</p>
+            <p>weight: {weight}</p>
 
             <ol className="list-decimal ml-4">
               <li>

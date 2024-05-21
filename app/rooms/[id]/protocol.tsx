@@ -91,7 +91,15 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
           />
         );
       case 5:
-        return <StepFive />;
+        return (
+          <StepFive
+            currRoom={currRoom}
+            weight={weight}
+            setWeight={setWeight}
+            rate={rate}
+            setRate={setRate}
+          />
+        );
       case 6:
         return <StepSix />;
       default:
