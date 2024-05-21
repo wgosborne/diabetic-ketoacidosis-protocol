@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { room } from '@prisma/client';
+import SheetFive from '../components/sheetStepFive';
 
 interface StepFiveProps {
   currRoom: room;
@@ -8,6 +9,10 @@ interface StepFiveProps {
   setWeight: (value: number) => void;
   rate: number;
   setRate: (value: number) => void;
+  potassium: number;
+  setPotassium: (value: number) => void;
+  bloodGlucose: number;
+  setBloodGlucose: (value: number) => void;
 }
 
 const StepFive = ({
@@ -15,10 +20,32 @@ const StepFive = ({
   weight,
   setWeight,
   rate,
-  setRate
+  setRate,
+  potassium,
+  setPotassium,
+  bloodGlucose,
+  setBloodGlucose
 }: StepFiveProps) => {
+
+  const adjust = (potassium: number, ) => {
+
+  }
+
   return (
     <div>
+      <div className="mb-3">
+        <SheetFive
+          currRoom={currRoom}
+          potassium={potassium}
+          weight={weight}
+          rate={rate}
+          bloodGlucose={bloodGlucose}
+          onNewPotassium={setPotassium}
+          onNewWeight={setWeight}
+          onNewRate={setRate}
+          onNewBloodGlucose={setBloodGlucose}
+        />
+      </div>
       <div className="mb-3">
         <Card>
           <CardHeader>

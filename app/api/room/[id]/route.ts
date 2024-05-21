@@ -23,6 +23,7 @@ export async function PATCH(request: NextRequest,
       potassium: parseFloat(body.potassium),
       rate: parseFloat(body.rate),
       weight: parseFloat(body.weight),
+      bloodGlucose: parseFloat(body.bloodGlucose),
     },
   });
 

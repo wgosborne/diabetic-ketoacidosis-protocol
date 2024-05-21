@@ -22,6 +22,7 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
   const [potassium, setPotassium] = useState(-1);
   const [weight, setWeight] = useState(-1);
   const [rate, setRate] = useState(-1);
+  const [bloodGlucose, setBloodGlucose] = useState(-1);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -98,6 +99,10 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
             setWeight={setWeight}
             rate={rate}
             setRate={setRate}
+            potassium={potassium}
+            setPotassium={setPotassium}
+            bloodGlucose={bloodGlucose}
+            setBloodGlucose={setBloodGlucose}
           />
         );
       case 6:
