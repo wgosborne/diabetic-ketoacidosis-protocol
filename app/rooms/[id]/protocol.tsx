@@ -129,6 +129,8 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
         setWeight={setWeight}
         rate={rate}
         setRate={setRate}
+        bloodGlucose={bloodGlucose}
+        setBloodGlucose={setBloodGlucose}
       />
       <Button onClick={() => handleOnSubmit(step)} className="mr-3">
         Next Step
