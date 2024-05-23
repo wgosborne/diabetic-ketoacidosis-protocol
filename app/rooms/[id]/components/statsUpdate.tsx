@@ -1,5 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription
+} from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
@@ -32,7 +39,6 @@ const Update = ({
   const { register, handleSubmit } = useForm({});
 
   const onSubmit = async (data: any) => {
-
     //Update state everywhere
     if (data.bloodGlucose) {
       onNewBloodGlucose(data.bloodGlucose);
@@ -70,27 +76,34 @@ const Update = ({
 
   return (
     <div>
-      <div className='bg-slate-950 rounded-md shadow-md'>
+      <div className="bg-slate-950 rounded-md shadow-md">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex items-center my-3 justify-center"
         >
-          <div className="ml-3 mt-3">
-            <div className="justify-center">
-              <Label className='text-white'>Enter the patients Blood Glucose</Label>
-            </div>
-            <Input
-              className="mt-2 mb-4 text-white"
-              type="number"
-              placeholder="Enter in mg/dL"
-              //   onChange={handleBloodGlucoseChange}
-              {...register('bloodGlucose', { valueAsNumber: true })}
-            />
-          </div>
+          <Card className="my-3">
+            <CardHeader>
+              <CardTitle className="">
+                Enter the patients Blood Glucose
+              </CardTitle>
+              <CardDescription>
+                The last time this stat was taken goes here
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Input
+                className=""
+                type="number"
+                placeholder="Enter in mg/dL"
+                //   onChange={handleBloodGlucoseChange}
+                {...register('bloodGlucose', { valueAsNumber: true })}
+              />
+            </CardContent>
+          </Card>
 
           <div className="ml-5 mt-3">
             <div className="ml-3 justify-center">
-              <Label className='text-white'>Enter the patients weight</Label>
+              <Label className="text-white">Enter the patients weight</Label>
             </div>
             <Input
               className="mt-2 mb-4 text-white"
@@ -100,7 +113,11 @@ const Update = ({
             />
           </div>
           <div className="ml-5 mt-3">
-            <Button type="submit" onClick={onSubmit} className='bg-white text-black'>
+            <Button
+              type="submit"
+              onClick={onSubmit}
+              className="bg-white text-black"
+            >
               Submit
             </Button>
           </div>
