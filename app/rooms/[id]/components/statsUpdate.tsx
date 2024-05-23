@@ -32,7 +32,6 @@ const Update = ({
   const { register, handleSubmit } = useForm({});
 
   const onSubmit = async (data: any) => {
-    console.log(data.bloodGlucose);
 
     //Update state everywhere
     if (data.bloodGlucose) {
