@@ -70,17 +70,17 @@ const Update = ({
 
   return (
     <div>
-      <div>
+      <div className='bg-slate-950 rounded-md shadow-md'>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="rounded-md shadow-md flex items-center my-3 justify-center shadow-inner"
+          className="flex items-center my-3 justify-center"
         >
           <div className="ml-3 mt-3">
             <div className="justify-center">
-              <Label>Enter the patients Blood Glucose</Label>
+              <Label className='text-white'>Enter the patients Blood Glucose</Label>
             </div>
             <Input
-              className="mt-2 mb-4"
+              className="mt-2 mb-4 text-white"
               type="number"
               placeholder="Enter in mg/dL"
               //   onChange={handleBloodGlucoseChange}
@@ -90,17 +90,17 @@ const Update = ({
 
           <div className="ml-5 mt-3">
             <div className="ml-3 justify-center">
-              <Label>Enter the patients weight</Label>
+              <Label className='text-white'>Enter the patients weight</Label>
             </div>
             <Input
-              className="mt-2 mb-4"
+              className="mt-2 mb-4 text-white"
               type="number"
               placeholder="Enter in kilograms"
               {...register('weight', { valueAsNumber: true })}
             />
           </div>
           <div className="ml-5 mt-3">
-            <Button type="submit" onClick={onSubmit}>
+            <Button type="submit" onClick={onSubmit} className='bg-white text-black'>
               Submit
             </Button>
           </div>
