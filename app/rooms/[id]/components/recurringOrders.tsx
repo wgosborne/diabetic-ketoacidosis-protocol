@@ -20,6 +20,8 @@ interface RecurringProps {
   setBMPTime: (value: number) => void;
   PhosTime: number;
   setPhosTime: (value: number) => void;
+  phosphorus: number;
+  setPhosphorus: (value: number) => void;
 }
 
 const Recurring = ({
@@ -35,7 +37,9 @@ const Recurring = ({
   BMPTime,
   setBMPTime,
   PhosTime,
-  setPhosTime
+  setPhosTime,
+  phosphorus,
+  setPhosphorus
 }: RecurringProps) => {
   return (
     <div>
@@ -74,6 +78,8 @@ const Recurring = ({
               onNewBMPTime={setBMPTime}
               PhosTime={PhosTime}
               onNewPhosTime={setPhosTime}
+              phosphorus={phosphorus}
+              onNewPhosphorus={setPhosphorus}
             />
           </CardContent>
           {/* <CardFooter>

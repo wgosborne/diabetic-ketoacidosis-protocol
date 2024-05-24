@@ -27,6 +27,8 @@ interface UpdateProps {
   onNewBMPTime: (value: number) => void;
   PhosTime: number;
   onNewPhosTime: (value: number) => void;
+  phosphorus: number;
+  onNewPhosphorus: (value: number) => void;
 }
 
 const Update = ({
@@ -42,7 +44,9 @@ const Update = ({
   BMPTime,
   onNewBMPTime,
   PhosTime,
-  onNewPhosTime
+  onNewPhosTime,
+  phosphorus,
+  onNewPhosphorus
 }: UpdateProps) => {
   const { register, handleSubmit } = useForm({});
 
@@ -67,9 +71,15 @@ const Update = ({
       }
     }
     if (data.phosphorus) {
-      //still need to actually update phos here
+      //Updating Phosphorus
+      onNewPhosphorus(data.phosphorus)
+      currRoom.phosphorus = data.phosphorus
+
+      //Updateing Phosphorus time
       onNewPhosTime(Date.now());
       currRoom.PqTime = Date.now();
+
+      
       try {
         await axios.patch('/api/room/' + currRoom.id, currRoom);
       } catch (error) {
