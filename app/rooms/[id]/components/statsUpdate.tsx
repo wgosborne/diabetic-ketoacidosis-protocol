@@ -23,6 +23,10 @@ interface UpdateProps {
   onNewWeight: (value: number) => void;
   onNewRate: (value: number) => void;
   onNewBloodGlucose: (value: number) => void;
+  BMPTime: number;
+  onNewBMPTime: (value: number) => void;
+  PhosTime: number;
+  onNewPhosTime: (value: number) => void;
 }
 
 const Update = ({
@@ -34,7 +38,11 @@ const Update = ({
   onNewPotassium,
   onNewWeight,
   onNewRate,
-  onNewBloodGlucose
+  onNewBloodGlucose,
+  BMPTime,
+  onNewBMPTime,
+  PhosTime,
+  onNewPhosTime
 }: UpdateProps) => {
   const { register, handleSubmit } = useForm({});
 
@@ -58,10 +66,17 @@ const Update = ({
         console.log(error);
       }
     }
-    // if (data.bloodGlucose) {
-    //   onNewBloodGlucose(data.bloodGlucose);
-    //   currRoom.bloodGlucose = data.bloodGlucose;
-    // }
+    if (data.phosphorus) {
+      //still need to actually update phos here
+      onNewPhosTime(Date.now());
+      currRoom.PqTime = Date.now();
+      try {
+        await axios.patch('/api/room/' + currRoom.id, currRoom);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
     // if (data.bloodGlucose) {
     //   onNewBloodGlucose(data.bloodGlucose);
     //   currRoom.bloodGlucose = data.bloodGlucose;
@@ -112,6 +127,21 @@ const Update = ({
               {...register('weight', { valueAsNumber: true })}
             />
           </div>
+
+          <div className="ml-5 mt-3">
+            <div className="ml-3 justify-center">
+              <Label className="text-white">
+                Enter the patients Phosphorus level
+              </Label>
+            </div>
+            <Input
+              className="mt-2 mb-4 text-white"
+              type="number"
+              placeholder="Enter in mg/dL"
+              {...register('phosphorus', { valueAsNumber: true })}
+            />
+          </div>
+
           <div className="ml-5 mt-3">
             <Button
               type="submit"

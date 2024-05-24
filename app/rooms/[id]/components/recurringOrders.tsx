@@ -16,6 +16,10 @@ interface RecurringProps {
   setRate: (value: number) => void;
   bloodGlucose: number;
   setBloodGlucose: (value: number) => void;
+  BMPTime: number;
+  setBMPTime: (value: number) => void;
+  PhosTime: number;
+  setPhosTime: (value: number) => void;
 }
 
 const Recurring = ({
@@ -27,7 +31,11 @@ const Recurring = ({
   rate,
   setRate,
   bloodGlucose,
-  setBloodGlucose
+  setBloodGlucose,
+  BMPTime,
+  setBMPTime,
+  PhosTime,
+  setPhosTime
 }: RecurringProps) => {
   return (
     <div>
@@ -45,7 +53,7 @@ const Recurring = ({
                 BMP q 4 hours (every 4 hours) until the Gap is less than or
                 equal to 16
               </li>
-              <li>Phosphorous q 4 hours (every 4 hours) x3</li>
+              <li>Phosphorus q 4 hours (every 4 hours) x3</li>
               <li>Serum Ketones q 4 hours (every 4 hours) x3</li>
               <li>
                 POC Blood Glucose q 1 hour (every hour) until off insulin drip
@@ -62,6 +70,10 @@ const Recurring = ({
               onNewWeight={setWeight}
               onNewRate={setRate}
               onNewBloodGlucose={setBloodGlucose}
+              BMPTime={BMPTime}
+              onNewBMPTime={setBMPTime}
+              PhosTime={PhosTime}
+              onNewPhosTime={setPhosTime}
             />
           </CardContent>
           {/* <CardFooter>

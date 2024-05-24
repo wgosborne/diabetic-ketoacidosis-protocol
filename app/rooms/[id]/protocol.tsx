@@ -25,12 +25,11 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
   const [weight, setWeight] = useState(-1);
   const [rate, setRate] = useState(-1);
   const [bloodGlucose, setBloodGlucose] = useState(-1);
-  const [BMPqTime, setBMPqTime] = useState(null);
-  const [PqTime, setPqTime] = useState(null); //phosphorus q time
-  const [PqCount, setPqCount] = useState(null); //phosphorus q count
-  const [sKqTime, setsKqTime] = useState(null); //Serum Ketones q time
-  const [sKqCount, setsKqCount] = useState(null); //Serum Ketones q count
-  const [POCBloodGqTime, setPOCBloodGqTime] = useState(null); //POC Blood Glucose q time
+  const [BMPqTime, setBMPqTime] = useState(Date.now());
+  const [PqTime, setPqTime] = useState(Date.now()); //phosphorus q time
+  const [PqCount, setPqCount] = useState(-1); //phosphorus q count
+  const [sKqTime, setsKqTime] = useState(Date.now()); //Serum Ketones q time
+  const [sKqCount, setsKqCount] = useState(-1); //Serum Ketones q count
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -131,6 +130,11 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
         setRate={setRate}
         bloodGlucose={bloodGlucose}
         setBloodGlucose={setBloodGlucose}
+        BMPTime={BMPqTime}
+        setBMPTime={setBMPqTime}
+        PhosTime={PqTime}
+        setPhosTime={setPqTime}
+
       />
       <Button onClick={() => handleOnSubmit(step)} className="mr-3">
         Next Step
