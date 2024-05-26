@@ -79,7 +79,7 @@ const Update = ({
       onNewPhosTime(Date.now());
       currRoom.PqTime = Date.now();
 
-      
+
       try {
         await axios.patch('/api/room/' + currRoom.id, currRoom);
       } catch (error) {
@@ -106,7 +106,7 @@ const Update = ({
           onSubmit={handleSubmit(onSubmit)}
           className="flex items-center my-3 justify-center"
         >
-          <Card className="my-3">
+          {/* <Card className="my-3">
             <CardHeader>
               <CardTitle className="">
                 Enter the patients Blood Glucose
@@ -124,7 +124,19 @@ const Update = ({
                 {...register('bloodGlucose', { valueAsNumber: true })}
               />
             </CardContent>
-          </Card>
+          </Card> */}
+
+          <div className="ml-5 mt-3">
+            <div className="ml-3 justify-center">
+              <Label className="text-white">Enter the patients blood glucose</Label>
+            </div>
+            <Input
+              className="mt-2 mb-4 text-white"
+              type="number"
+              placeholder="Enter in mg/dL"
+              {...register('bloodGlucose', { valueAsNumber: true })}
+            />
+          </div>
 
           <div className="ml-5 mt-3">
             <div className="ml-3 justify-center">
@@ -152,7 +164,7 @@ const Update = ({
             />
           </div>
 
-          <div className="ml-5 mt-3">
+          <div className="ml-5 mt-3 mr-4">
             <Button
               type="submit"
               onClick={onSubmit}
