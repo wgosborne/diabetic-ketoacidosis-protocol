@@ -16,12 +16,20 @@ interface RecurringProps {
   setRate: (value: number) => void;
   bloodGlucose: number;
   setBloodGlucose: (value: number) => void;
+  bmp: number;
+  setBMP: (value: number) => void;
   BMPTime: number;
   setBMPTime: (value: number) => void;
   PhosTime: number;
   setPhosTime: (value: number) => void;
   phosphorus: number;
   setPhosphorus: (value: number) => void;
+  serumKetones: number;
+  setSerumKetones: (value: number) => void;
+  sKqTime: number;
+  setsKqTime: (value: number) => void;
+  sKqCount: number;
+  setsKqCount: (value: number) => void;
 }
 
 const Recurring = ({
@@ -34,12 +42,20 @@ const Recurring = ({
   setRate,
   bloodGlucose,
   setBloodGlucose,
+  bmp,
+  setBMP,
   BMPTime,
   setBMPTime,
   PhosTime,
   setPhosTime,
   phosphorus,
-  setPhosphorus
+  setPhosphorus,
+  serumKetones,
+  setSerumKetones,
+  sKqTime,
+  setsKqTime,
+  sKqCount,
+  setsKqCount
 }: RecurringProps) => {
   return (
     <div>
@@ -74,12 +90,20 @@ const Recurring = ({
               onNewWeight={setWeight}
               onNewRate={setRate}
               onNewBloodGlucose={setBloodGlucose}
+              bmp={bmp}
+              onNewBMP={setBMP}
               BMPTime={BMPTime}
               onNewBMPTime={setBMPTime}
               PhosTime={PhosTime}
               onNewPhosTime={setPhosTime}
               phosphorus={phosphorus}
               onNewPhosphorus={setPhosphorus}
+              serumKetones={serumKetones}
+              onNewSerumKetones={setSerumKetones}
+              sKqTime={sKqTime}
+              onNewSKTime={setsKqTime}
+              sKqCount={sKqCount}
+              onNewSKCount={setsKqCount}
             />
           </CardContent>
           {/* <CardFooter>

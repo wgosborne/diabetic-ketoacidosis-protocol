@@ -23,12 +23,20 @@ interface UpdateProps {
   onNewWeight: (value: number) => void;
   onNewRate: (value: number) => void;
   onNewBloodGlucose: (value: number) => void;
+  bmp: number;
+  onNewBMP: (value: number) => void;
   BMPTime: number;
   onNewBMPTime: (value: number) => void;
   PhosTime: number;
   onNewPhosTime: (value: number) => void;
   phosphorus: number;
   onNewPhosphorus: (value: number) => void;
+  serumKetones: number;
+  onNewSerumKetones: (value: number) => void;
+  sKqTime: number;
+  onNewSKTime: (value: number) => void;
+  sKqCount: number;
+  onNewSKCount: (value: number) => void;
 }
 
 const Update = ({
@@ -41,12 +49,20 @@ const Update = ({
   onNewWeight,
   onNewRate,
   onNewBloodGlucose,
+  bmp,
+  onNewBMP,
   BMPTime,
   onNewBMPTime,
   PhosTime,
   onNewPhosTime,
   phosphorus,
-  onNewPhosphorus
+  onNewPhosphorus,
+  serumKetones,
+  onNewSerumKetones,
+  sKqTime,
+  onNewSKTime,
+  sKqCount,
+  onNewSKCount
 }: UpdateProps) => {
   const { register, handleSubmit } = useForm({});
 
@@ -55,6 +71,43 @@ const Update = ({
     if (data.bloodGlucose) {
       onNewBloodGlucose(data.bloodGlucose);
       currRoom.bloodGlucose = data.bloodGlucose;
+
+      
+
+      try {
+        await axios.patch('/api/room/' + currRoom.id, currRoom);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    if (data.bmp) {
+      //Updating bmp
+      onNewBMP(data.bmp);
+      currRoom.phosphorus = data.phosphorus;
+
+      //Updateing bmp time
+      onNewBMPTime(Date.now());
+      currRoom.BMPqTime = Date.now();
+
+      try {
+        await axios.patch('/api/room/' + currRoom.id, currRoom);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    if (data.serumKetones) {
+      //Updating serum ketones
+      onNewSerumKetones(data.serumKetones);
+      currRoom.serumKetones = data.serumKetones;
+
+      //Updating serum ketones time
+      onNewSKTime(Date.now());
+      currRoom.sKqTime = Date.now();
+
+      //Updating serum ketones count
+      onNewSKCount(++sKqCount);
+      currRoom.sKqCount = ++sKqCount;
+
       try {
         await axios.patch('/api/room/' + currRoom.id, currRoom);
       } catch (error) {
@@ -72,13 +125,12 @@ const Update = ({
     }
     if (data.phosphorus) {
       //Updating Phosphorus
-      onNewPhosphorus(data.phosphorus)
-      currRoom.phosphorus = data.phosphorus
+      onNewPhosphorus(data.phosphorus);
+      currRoom.phosphorus = data.phosphorus;
 
       //Updateing Phosphorus time
       onNewPhosTime(Date.now());
       currRoom.PqTime = Date.now();
-
 
       try {
         await axios.patch('/api/room/' + currRoom.id, currRoom);
@@ -86,11 +138,6 @@ const Update = ({
         console.log(error);
       }
     }
-
-    // if (data.bloodGlucose) {
-    //   onNewBloodGlucose(data.bloodGlucose);
-    //   currRoom.bloodGlucose = data.bloodGlucose;
-    // }
 
     // try {
     //   await axios.patch('/api/room/' + currRoom.id, currRoom);
@@ -106,6 +153,8 @@ const Update = ({
           onSubmit={handleSubmit(onSubmit)}
           className="flex items-center my-3 justify-center"
         >
+          {/* keeping this commented out incase I want to change it to the card format later */}
+
           {/* <Card className="my-3">
             <CardHeader>
               <CardTitle className="">
@@ -128,7 +177,9 @@ const Update = ({
 
           <div className="ml-5 mt-3">
             <div className="ml-3 justify-center">
-              <Label className="text-white">Enter the patients blood glucose</Label>
+              <Label className="text-white">
+                Enter the patients Blood Glucose
+              </Label>
             </div>
             <Input
               className="mt-2 mb-4 text-white"
@@ -140,11 +191,38 @@ const Update = ({
 
           <div className="ml-5 mt-3">
             <div className="ml-3 justify-center">
+              <Label className="text-white">Enter the patients BMP</Label>
+            </div>
+            <Input
+              className="mt-2 mb-4 text-white"
+              type="number"
+              placeholder="Enter as a number"
+              {...register('bmp', { valueAsNumber: true })}
+            />
+          </div>
+
+          <div className="ml-5 mt-3">
+            <div className="ml-3 justify-center">
+              <Label className="text-white">
+                Enter the patients Serum Ketones
+              </Label>
+            </div>
+            <Input
+              className="mt-2 mb-4 text-white"
+              type="number"
+              placeholder="Enter as a number"
+              {...register('serumKetones', { valueAsNumber: true })}
+            />
+          </div>
+
+          <div className="ml-5 mt-3">
+            <div className="ml-3 justify-center">
               <Label className="text-white">Enter the patients weight</Label>
             </div>
             <Input
               className="mt-2 mb-4 text-white"
               type="number"
+              step=".01"
               placeholder="Enter in kilograms"
               {...register('weight', { valueAsNumber: true })}
             />
@@ -159,6 +237,7 @@ const Update = ({
             <Input
               className="mt-2 mb-4 text-white"
               type="number"
+              step=".01"
               placeholder="Enter in mg/dL"
               {...register('phosphorus', { valueAsNumber: true })}
             />

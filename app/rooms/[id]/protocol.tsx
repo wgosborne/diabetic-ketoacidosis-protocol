@@ -26,6 +26,8 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
   const [rate, setRate] = useState(-1);
   const [bloodGlucose, setBloodGlucose] = useState(-1);
   const [phosphorus, setPhosphorus] = useState(-1);
+  const [bmp, setBMP] = useState(-1);
+  const [serumKetones, setSerumKetones] = useState(-1);
   const [BMPqTime, setBMPqTime] = useState(Date.now());
   const [PqTime, setPqTime] = useState(Date.now()); //phosphorus q time
   const [PqCount, setPqCount] = useState(-1); //phosphorus q count
@@ -131,12 +133,20 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
         setRate={setRate}
         bloodGlucose={bloodGlucose}
         setBloodGlucose={setBloodGlucose}
+        bmp={bmp}
+        setBMP={setBMP}
         BMPTime={BMPqTime}
         setBMPTime={setBMPqTime}
         PhosTime={PqTime}
         setPhosTime={setPqTime}
         phosphorus={phosphorus}
         setPhosphorus={setPhosphorus}
+        serumKetones={serumKetones}
+        setSerumKetones={setSerumKetones}
+        sKqTime={sKqTime}
+        setsKqTime={setsKqTime}
+        sKqCount={sKqCount}
+        setsKqCount={setsKqCount}
 
       />
       <Button onClick={() => handleOnSubmit(step)} className="mr-3">

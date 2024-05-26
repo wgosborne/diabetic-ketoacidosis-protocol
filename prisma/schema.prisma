@@ -16,7 +16,9 @@ model room {
   weight         Float?
   rate           Float?
   bloodGlucose   Float?
-  phosphorus    Float?
+  phosphorus     Float?
+  bmp            Float?
+  serumKetones   Float?
   BMPqTime       Float?
   PqTime         Float?
   PqCount        Float?
