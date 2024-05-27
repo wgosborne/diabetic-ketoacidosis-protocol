@@ -144,6 +144,8 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
         setPhosTime={setPqTime}
         phosphorus={phosphorus}
         setPhosphorus={setPhosphorus}
+        phosCount={PqCount}
+        setPhosCount={setPqCount}
         serumKetones={serumKetones}
         setSerumKetones={setSerumKetones}
         sKqTime={sKqTime}

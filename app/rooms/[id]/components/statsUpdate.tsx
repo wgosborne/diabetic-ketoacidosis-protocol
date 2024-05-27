@@ -33,6 +33,8 @@ interface UpdateProps {
   onNewPhosTime: (value: number) => void;
   phosphorus: number;
   onNewPhosphorus: (value: number) => void;
+  phosCount: number;
+  onNewPhosCount: (value: number) => void;
   serumKetones: number;
   onNewSerumKetones: (value: number) => void;
   sKqTime: number;
@@ -59,6 +61,8 @@ const Update = ({
   onNewBMPTime,
   PhosTime,
   onNewPhosTime,
+  phosCount,
+  onNewPhosCount,
   phosphorus,
   onNewPhosphorus,
   serumKetones,
@@ -88,7 +92,7 @@ const Update = ({
     if (data.bmp) {
       //Updating bmp
       onNewBMP(data.bmp);
-      currRoom.phosphorus = data.phosphorus;
+      currRoom.bmp = data.bmp;
 
       //Updateing bmp time
       onNewBMPTime(Date.now());
@@ -133,9 +137,13 @@ const Update = ({
       onNewPhosphorus(data.phosphorus);
       currRoom.phosphorus = data.phosphorus;
 
-      //Updateing Phosphorus time
+      //Updating Phosphorus time
       onNewPhosTime(Date.now());
       currRoom.PqTime = Date.now();
+
+      //Updating Phosphorus count
+      onNewPhosCount(++phosCount);
+      currRoom.PqCount = ++phosCount;
 
       try {
         await axios.patch('/api/room/' + currRoom.id, currRoom);

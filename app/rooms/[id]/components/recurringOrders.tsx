@@ -26,6 +26,8 @@ interface RecurringProps {
   setPhosTime: (value: number) => void;
   phosphorus: number;
   setPhosphorus: (value: number) => void;
+  phosCount: number;
+  setPhosCount: (value: number) => void;
   serumKetones: number;
   setSerumKetones: (value: number) => void;
   sKqTime: number;
@@ -54,6 +56,8 @@ const Recurring = ({
   setPhosTime,
   phosphorus,
   setPhosphorus,
+  phosCount,
+  setPhosCount,
   serumKetones,
   setSerumKetones,
   sKqTime,
@@ -104,6 +108,8 @@ const Recurring = ({
               onNewPhosTime={setPhosTime}
               phosphorus={phosphorus}
               onNewPhosphorus={setPhosphorus}
+              phosCount={phosCount}
+              onNewPhosCount={setPhosCount}
               serumKetones={serumKetones}
               onNewSerumKetones={setSerumKetones}
               sKqTime={sKqTime}
