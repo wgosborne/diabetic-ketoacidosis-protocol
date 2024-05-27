@@ -30,7 +30,7 @@ export async function PATCH(request: NextRequest,
       PqCount: parseFloat(body.PqCount),
       sKqTime: parseFloat(body.sKqTime),
       sKqCount: parseFloat(body.sKqCount),
-      POCBloodGqTime:parseFloat(body.POCBloodGqTime)
+      bloodGlucoseTime:parseFloat(body.bloodGlucoseTime)
     },
   });
 

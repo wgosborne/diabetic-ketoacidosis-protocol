@@ -19,6 +19,8 @@ interface UpdateProps {
   weight: number;
   rate: number;
   bloodGlucose: number;
+  bGTime: number;
+  onNewBGTime: (value: number) => void;
   onNewPotassium: (value: number) => void;
   onNewWeight: (value: number) => void;
   onNewRate: (value: number) => void;
@@ -49,6 +51,8 @@ const Update = ({
   onNewWeight,
   onNewRate,
   onNewBloodGlucose,
+  bGTime,
+  onNewBGTime,
   bmp,
   onNewBMP,
   BMPTime,
@@ -72,7 +76,8 @@ const Update = ({
       onNewBloodGlucose(data.bloodGlucose);
       currRoom.bloodGlucose = data.bloodGlucose;
 
-      
+      onNewBGTime(Date.now());
+      currRoom.bloodGlucoseTime = Date.now();
 
       try {
         await axios.patch('/api/room/' + currRoom.id, currRoom);

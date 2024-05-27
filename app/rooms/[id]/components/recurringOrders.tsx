@@ -16,6 +16,8 @@ interface RecurringProps {
   setRate: (value: number) => void;
   bloodGlucose: number;
   setBloodGlucose: (value: number) => void;
+  bGTime: number;
+  setBGTime: (value: number) => void;
   bmp: number;
   setBMP: (value: number) => void;
   BMPTime: number;
@@ -41,6 +43,8 @@ const Recurring = ({
   rate,
   setRate,
   bloodGlucose,
+  bGTime,
+  setBGTime,
   setBloodGlucose,
   bmp,
   setBMP,
@@ -86,6 +90,8 @@ const Recurring = ({
               weight={weight}
               rate={rate}
               bloodGlucose={bloodGlucose}
+              bGTime={bGTime}
+              onNewBGTime={setBGTime}
               onNewPotassium={setPotassium}
               onNewWeight={setWeight}
               onNewRate={setRate}

@@ -25,6 +25,7 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
   const [weight, setWeight] = useState(-1);
   const [rate, setRate] = useState(-1);
   const [bloodGlucose, setBloodGlucose] = useState(-1);
+  const [bloodGlucoseTime, setBloodGlucoseTime] = useState(-1);
   const [phosphorus, setPhosphorus] = useState(-1);
   const [bmp, setBMP] = useState(-1);
   const [serumKetones, setSerumKetones] = useState(-1);
@@ -133,6 +134,8 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
         setRate={setRate}
         bloodGlucose={bloodGlucose}
         setBloodGlucose={setBloodGlucose}
+        bGTime={bloodGlucoseTime}
+        setBGTime={setBloodGlucoseTime}
         bmp={bmp}
         setBMP={setBMP}
         BMPTime={BMPqTime}
