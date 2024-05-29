@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import axios from 'axios';
 import {
   Card,
@@ -76,7 +76,35 @@ const Update = ({
   anionGap,
   onNewAnionGap
 }: UpdateProps) => {
-  const { register, handleSubmit } = useForm({});
+  const { register, handleSubmit, reset, formState } = useForm({
+    defaultValues: {
+      bloodGlucose: '',
+      bmp: '',
+      serumKetones: '',
+      weight: '',
+      phosphorus: '',
+      anionGap: ''
+    },
+    shouldUnregister: true
+  });
+
+
+  // const onReset = async () => {
+  //   const result = await Promise.resolve({
+  //     bloodGlucose: '',
+  //     bmp: '',
+  //     serumKetones: '',
+  //     weight: '',
+  //     phosphorus: '',
+  //     anionGap: ''
+  //   });
+
+  //   reset(result);
+  // };
+
+  // useEffect(() => {
+  //   onReset();
+  // }, []);
 
   const onSubmit = async (data: any) => {
     //Update state everywhere
@@ -162,6 +190,7 @@ const Update = ({
 
       try {
         await axios.patch('/api/room/' + currRoom.id, currRoom);
+        reset();
       } catch (error) {
         console.log(error);
       }
@@ -172,6 +201,7 @@ const Update = ({
     // } catch (error) {
     //   console.log(error);
     // }
+    // reset();
   };
 
   return (
