@@ -1,21 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import MySheet from '../components/sheet';
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
-} from '@/components/ui/table';
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle
 } from '@/components/ui/card';

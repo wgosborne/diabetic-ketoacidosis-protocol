@@ -155,6 +155,17 @@ const Update = ({
         console.log(error);
       }
     }
+    if (data.anionGap) {
+      //Updating Phosphorus
+      onNewAnionGap(data.anionGap);
+      currRoom.anionGap = data.anionGap;
+
+      try {
+        await axios.patch('/api/room/' + currRoom.id, currRoom);
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
     // try {
     //   await axios.patch('/api/room/' + currRoom.id, currRoom);
@@ -257,6 +268,21 @@ const Update = ({
               step=".01"
               placeholder="Enter in mg/dL"
               {...register('phosphorus', { valueAsNumber: true })}
+            />
+          </div>
+
+          <div className="ml-5 mt-3">
+            <div className="ml-3 justify-center">
+              <Label className="text-white">
+                Enter the patients Anion Gap
+              </Label>
+            </div>
+            <Input
+              className="mt-2 mb-4 text-white"
+              type="number"
+              step=".01"
+              placeholder="Enter in mEq/L"
+              {...register('anionGap', { valueAsNumber: true })}
             />
           </div>
 
