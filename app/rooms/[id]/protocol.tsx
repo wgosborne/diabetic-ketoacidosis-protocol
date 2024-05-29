@@ -152,6 +152,8 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
         setsKqTime={setsKqTime}
         sKqCount={sKqCount}
         setsKqCount={setsKqCount}
+        anionGap={anionGap}
+        setAnionGap={setAnionGap}
 
       />
       <Button onClick={() => handleOnSubmit(step)} className="mr-3">

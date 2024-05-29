@@ -41,6 +41,8 @@ interface UpdateProps {
   onNewSKTime: (value: number) => void;
   sKqCount: number;
   onNewSKCount: (value: number) => void;
+  anionGap: number;
+  onNewAnionGap: (value: number) => void;
 }
 
 const Update = ({
@@ -70,7 +72,9 @@ const Update = ({
   sKqTime,
   onNewSKTime,
   sKqCount,
-  onNewSKCount
+  onNewSKCount,
+  anionGap,
+  onNewAnionGap
 }: UpdateProps) => {
   const { register, handleSubmit } = useForm({});
 

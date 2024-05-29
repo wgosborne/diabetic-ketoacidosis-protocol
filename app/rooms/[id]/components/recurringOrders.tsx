@@ -34,6 +34,8 @@ interface RecurringProps {
   setsKqTime: (value: number) => void;
   sKqCount: number;
   setsKqCount: (value: number) => void;
+  anionGap: number;
+  setAnionGap: (value: number) => void;
 }
 
 const Recurring = ({
@@ -63,7 +65,9 @@ const Recurring = ({
   sKqTime,
   setsKqTime,
   sKqCount,
-  setsKqCount
+  setsKqCount,
+  anionGap,
+  setAnionGap
 }: RecurringProps) => {
   return (
     <div>
@@ -116,6 +120,8 @@ const Recurring = ({
               onNewSKTime={setsKqTime}
               sKqCount={sKqCount}
               onNewSKCount={setsKqCount}
+              anionGap={anionGap}
+              onNewAnionGap={setAnionGap}
             />
           </CardContent>
           {/* <CardFooter>
