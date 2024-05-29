@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import {
   Card,
@@ -88,25 +88,16 @@ const Update = ({
     shouldUnregister: true
   });
 
+  const pushDatabase = async () => {
+    try {
+      await axios.patch('/api/room/' + currRoom.id, currRoom);
+      reset();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // const onReset = async () => {
-  //   const result = await Promise.resolve({
-  //     bloodGlucose: '',
-  //     bmp: '',
-  //     serumKetones: '',
-  //     weight: '',
-  //     phosphorus: '',
-  //     anionGap: ''
-  //   });
-
-  //   reset(result);
-  // };
-
-  // useEffect(() => {
-  //   onReset();
-  // }, []);
-
-  const onSubmit = async (data: any) => {
+  const onSubmit = (data: any) => {
     //Update state everywhere
     if (data.bloodGlucose) {
       onNewBloodGlucose(data.bloodGlucose);
@@ -114,27 +105,15 @@ const Update = ({
 
       onNewBGTime(Date.now());
       currRoom.bloodGlucoseTime = Date.now();
-
-      try {
-        await axios.patch('/api/room/' + currRoom.id, currRoom);
-      } catch (error) {
-        console.log(error);
-      }
     }
     if (data.bmp) {
       //Updating bmp
       onNewBMP(data.bmp);
       currRoom.bmp = data.bmp;
 
-      //Updateing bmp time
+      //Updating bmp time
       onNewBMPTime(Date.now());
       currRoom.BMPqTime = Date.now();
-
-      try {
-        await axios.patch('/api/room/' + currRoom.id, currRoom);
-      } catch (error) {
-        console.log(error);
-      }
     }
     if (data.serumKetones) {
       //Updating serum ketones
@@ -148,21 +127,10 @@ const Update = ({
       //Updating serum ketones count
       onNewSKCount(++sKqCount);
       currRoom.sKqCount = ++sKqCount;
-
-      try {
-        await axios.patch('/api/room/' + currRoom.id, currRoom);
-      } catch (error) {
-        console.log(error);
-      }
     }
     if (data.weight) {
       onNewWeight(data.weight);
       currRoom.weight = data.weight;
-      try {
-        await axios.patch('/api/room/' + currRoom.id, currRoom);
-      } catch (error) {
-        console.log(error);
-      }
     }
     if (data.phosphorus) {
       //Updating Phosphorus
@@ -176,32 +144,13 @@ const Update = ({
       //Updating Phosphorus count
       onNewPhosCount(++phosCount);
       currRoom.PqCount = ++phosCount;
-
-      try {
-        await axios.patch('/api/room/' + currRoom.id, currRoom);
-      } catch (error) {
-        console.log(error);
-      }
     }
     if (data.anionGap) {
       //Updating Phosphorus
       onNewAnionGap(data.anionGap);
       currRoom.anionGap = data.anionGap;
-
-      try {
-        await axios.patch('/api/room/' + currRoom.id, currRoom);
-        reset();
-      } catch (error) {
-        console.log(error);
-      }
     }
-
-    // try {
-    //   await axios.patch('/api/room/' + currRoom.id, currRoom);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-    // reset();
+    pushDatabase();
   };
 
   return (
@@ -303,9 +252,7 @@ const Update = ({
 
           <div className="ml-5 mt-3">
             <div className="ml-3 justify-center">
-              <Label className="text-white">
-                Enter the patients Anion Gap
-              </Label>
+              <Label className="text-white">Enter the patients Anion Gap</Label>
             </div>
             <Input
               className="mt-2 mb-4 text-white"
