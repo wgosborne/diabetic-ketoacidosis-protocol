@@ -78,7 +78,7 @@ export default StepFour;
 //       case weight < 39.5:
 //         setRate(-1);
 //         return false;
-//       case weight < 44.5:
+//       case weight < 43.5:
 //         setRate(4)
 //         return '4';
 //       case weight < 49.5:
