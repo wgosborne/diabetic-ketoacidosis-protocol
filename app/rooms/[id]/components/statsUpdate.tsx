@@ -12,6 +12,7 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { room } from '@prisma/client';
 import { useForm } from 'react-hook-form';
+import StartBMPTimeOut from '../../../utils/BMPCheck';
 
 interface UpdateProps {
   currRoom: room;
@@ -150,6 +151,8 @@ const Update = ({
       onNewAnionGap(data.anionGap);
       currRoom.anionGap = data.anionGap;
     }
+    //Setting the timeout for the times
+    StartBMPTimeOut(currRoom.BMPqTime);
     pushDatabase();
   };
 
