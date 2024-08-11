@@ -153,6 +153,8 @@ const Update = ({
     }
     //Setting the timeout for the times
     StartBMPTimeOut(currRoom.BMPqTime);
+    //StartBGTimeOut(currRoom.BMPqTime); NEEDS TO BE PASSED IN AS A PROB
+
     pushDatabase();
   };
 

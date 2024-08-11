@@ -2,13 +2,12 @@
 //should run everytime BMP is updated
 
 const StartBMPTimeOut = (bmpTime: Number | null) => {
-  const intervalInMilliseconds = 4 * 60 * 60 * 1000; // 4 hours in milliseconds
+  const intervalInMilliseconds = 4 * 60 * 60 * 1000; // 4 hours in milliseconds, CHANGE THIS BACK TO CONSY
   console.log(bmpTime);
 
-  setTimeout(function runAndReschedule() {
+  setTimeout(() => {
     //Put the function here
-    //right now it restarts and refreshes every time you switch the page
-    setTimeout(runAndReschedule, intervalInMilliseconds);
+    alert('Time to update the patients BMP');
   }, intervalInMilliseconds);
 
   //pull the amount of time its been from the db
