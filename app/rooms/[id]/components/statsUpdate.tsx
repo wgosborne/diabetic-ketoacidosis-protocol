@@ -14,6 +14,11 @@ import { room } from '@prisma/client';
 import { useForm } from 'react-hook-form';
 import StartBMPTimeOut from '../../../utils/BMPCheck';
 import StartBGTimeOut from '../../../utils/BloodGlucoseCheck';
+import {
+  StartPhosTimeOut,
+  CheckPhosCount
+} from '../../../utils/PhosphorusCheck';
+import { StartSKTimeOut, CheckSKCount } from '../../../utils/SKCheck';
 
 interface UpdateProps {
   currRoom: room;
@@ -144,8 +149,16 @@ const Update = ({
       currRoom.PqTime = Date.now();
 
       //Updating Phosphorus count
-      onNewPhosCount(++phosCount);
-      currRoom.PqCount = ++phosCount;
+      if (phosCount <= 3) {
+        onNewPhosCount(++phosCount);
+        currRoom.PqCount = ++phosCount;
+      } else {
+        //reset phosphorus here
+        console.log('phosphorus being reset');
+        phosCount = 0;
+        onNewPhosCount(++phosCount);
+        currRoom.PqCount = ++phosCount;
+      }
     }
     if (data.anionGap) {
       //Updating Phosphorus
@@ -154,7 +167,9 @@ const Update = ({
     }
     //Setting the timeout for the times
     StartBMPTimeOut(currRoom.BMPqTime, currRoom.anionGap);
-    StartBGTimeOut(currRoom.bloodGlucoseTime); 
+    StartBGTimeOut(currRoom.bloodGlucoseTime);
+    StartPhosTimeOut(currRoom.PqTime, currRoom.PqCount);
+    CheckPhosCount(currRoom.PqCount);
 
     pushDatabase();
   };

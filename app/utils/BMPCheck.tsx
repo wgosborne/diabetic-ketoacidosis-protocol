@@ -11,6 +11,7 @@ const StartBMPTimeOut = (bmpTime: Number | null, anionGap: Number | null) => {
     alert('Time to update the patients BMP');
 
     //add an anion gap  check here
+    
   }, intervalInMilliseconds);
 
   //pull the amount of time its been from the db
