@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import { room } from '@prisma/client';
 import { useForm } from 'react-hook-form';
 import StartBMPTimeOut from '../../../utils/BMPCheck';
+import StartBGTimeOut from '../../../utils/BloodGlucoseCheck';
 
 interface UpdateProps {
   currRoom: room;
@@ -152,8 +153,8 @@ const Update = ({
       currRoom.anionGap = data.anionGap;
     }
     //Setting the timeout for the times
-    StartBMPTimeOut(currRoom.BMPqTime);
-    //StartBGTimeOut(currRoom.BMPqTime); NEEDS TO BE PASSED IN AS A PROB
+    StartBMPTimeOut(currRoom.BMPqTime, currRoom.anionGap);
+    StartBGTimeOut(currRoom.bloodGlucoseTime); 
 
     pushDatabase();
   };
