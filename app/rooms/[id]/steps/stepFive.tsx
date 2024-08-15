@@ -26,10 +26,9 @@ const StepFive = ({
   bloodGlucose,
   setBloodGlucose
 }: StepFiveProps) => {
-
-  const adjust = (potassium: number, ) => {
-
-  }
+  
+  //keeping this for the potassium adj
+  const adjust = (potassium: number) => {};
 
   return (
     <div>
