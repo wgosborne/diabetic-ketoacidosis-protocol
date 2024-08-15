@@ -132,8 +132,15 @@ const Update = ({
       currRoom.sKqTime = Date.now();
 
       //Updating serum ketones count
-      onNewSKCount(++sKqCount);
-      currRoom.sKqCount = ++sKqCount;
+      if (sKqCount <= 3) {
+        onNewSKCount(++sKqCount);
+        currRoom.sKqCount = ++sKqCount;
+      } else {
+        console.log('Serum Ketone count being reset');
+        sKqCount = 0;
+        onNewSKCount(++sKqCount);
+        currRoom.sKqCount = ++sKqCount;
+      }
     }
     if (data.weight) {
       onNewWeight(data.weight);
@@ -170,6 +177,8 @@ const Update = ({
     StartBGTimeOut(currRoom.bloodGlucoseTime);
     StartPhosTimeOut(currRoom.PqTime, currRoom.PqCount);
     CheckPhosCount(currRoom.PqCount);
+    StartSKTimeOut(currRoom.sKqTime, currRoom.sKqCount);
+    CheckSKCount(currRoom.sKqCount);
 
     pushDatabase();
   };
