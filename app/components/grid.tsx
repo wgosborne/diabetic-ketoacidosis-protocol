@@ -43,25 +43,33 @@ const Grid = ({ rooms, patients }: GridProps) => {
             </CardDescription>
           </CardHeader>
           <CardContent className="flex-grow">
-            <b className="text-sm">Serum Ketone Time: </b>
-            <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
-              {room.sKqTime || 'NULL'}
-            </code>
-            <br />
-            <b className="text-sm">Phosphorous Time: </b>
-            <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
-              {room.PqTime || 'NULL'}
-            </code>
-            <br />
-            <b className="text-sm">BMP Time: </b>
-            <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
-              {room.BMPqTime || 'NULL'}
-            </code>
-            <br />
-            <b className="text-sm">Blood Glucose Time: </b>
-            <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
-              {room.bloodGlucoseTime || 'NULL'}
-            </code>
+            <div className="flex justify-between mb-1">
+              <b className="text-sm">Serum Ketone Time: </b>
+              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                {room.sKqTime || 'NULL'}
+              </code>
+            </div>
+
+            <div className="flex justify-between mb-1">
+              <b className="text-sm">Phosphorous Time: </b>
+              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                {room.PqTime || 'NULL'}
+              </code>
+            </div>
+
+            <div className="flex justify-between mb-1">
+              <b className="text-sm">BMP Time: </b>
+              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                {room.BMPqTime || 'NULL'}
+              </code>
+            </div>
+
+            <div className="flex justify-between">
+              <b className="text-sm">Blood Glucose Time: </b>
+              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+                {room.bloodGlucoseTime || 'NULL'}
+              </code>
+            </div>
           </CardContent>
           <CardFooter className="padding-10">
             <Button onClick={() => handleOnClick(room.id)}>Select</Button>
