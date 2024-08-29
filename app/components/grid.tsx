@@ -35,14 +35,14 @@ const Grid = ({ rooms, patients }: GridProps) => {
       //lg:grid-cols-5
     >
       {rooms.map((room: room) => (
-        <Card key={room.id}>
+        <Card key={room.id} className="flex flex-col">
           <CardHeader>
             <CardTitle>{room.roomNum}</CardTitle>
             <CardDescription>
               {findPatient(patients, room.patientID)}
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="flex-grow">
             <b className="text-sm">Serum Ketone Time: </b>
             <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
               {room.sKqTime || 'NULL'}
@@ -63,7 +63,7 @@ const Grid = ({ rooms, patients }: GridProps) => {
               {room.bloodGlucoseTime || 'NULL'}
             </code>
           </CardContent>
-          <CardFooter>
+          <CardFooter className="padding-10">
             <Button onClick={() => handleOnClick(room.id)}>Select</Button>
           </CardFooter>
         </Card>
