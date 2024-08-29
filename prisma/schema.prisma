@@ -8,21 +8,32 @@ datasource db {
 }
 
 model room {
-  id               Int    @id @default(autoincrement())
+  id               Int      @id @default(autoincrement())
   step             Int?
   roomNum          Int?
   potassium        Float?
-  anionGap         Float?
-  weight           Float?
   rate             Float?
+  weight           Float?
   bloodGlucose     Float?
+  anionGap         Float?
+  BMPqTime         Float?
+  PqCount          Float?
+  PqTime           Float?
+  sKqCount         Float?
+  sKqTime          Float?
   phosphorus       Float?
   bmp              Float?
   serumKetones     Float?
-  BMPqTime         Float?
-  PqTime           Float?
-  PqCount          Float?
-  sKqTime          Float?
-  sKqCount         Float?
   bloodGlucoseTime Float?
+  patientID        Int?
+  patient          patient? @relation(fields: [patientID], references: [id], onUpdate: NoAction, map: "fk_patientID")
+
+  @@index([patientID], map: "fk_patientID_idx")
+}
+
+model patient {
+  id     Int     @id @default(autoincrement())
+  status Int?
+  name   String?
+  room   room[]
 }
