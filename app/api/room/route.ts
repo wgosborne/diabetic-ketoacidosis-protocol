@@ -8,6 +8,8 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
 
+  //not using this yet, this is for when I start making rooms
+
   const body = await request.json();
 
   const newRoom = await prisma.room.create({

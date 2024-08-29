@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
 import React from 'react';
-import { room } from "@prisma/client";
+import { room, patient } from '@prisma/client';
 import { SimpleGrid, Text } from '@chakra-ui/react';
 import {
   Card,
@@ -11,14 +11,15 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
-import { Button } from "@/components/ui/button"
+import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 
 interface GridProps {
   rooms: room[];
+  patients: patient[];
 }
 
-const Grid = ({rooms}: GridProps) => {
+const Grid = ({ rooms, patients }: GridProps) => {
   const router = useRouter();
 
   const handleOnClick = (e: number) => {
@@ -36,18 +37,48 @@ const Grid = ({rooms}: GridProps) => {
         <Card key={room.id}>
           <CardHeader>
             <CardTitle>{room.roomNum}</CardTitle>
-            <CardDescription>Card Description</CardDescription>
+            <CardDescription>
+              {findPatient(patients, room.patientID)}
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <p>Card Content</p>
           </CardContent>
           <CardFooter>
-          <Button onClick={() => handleOnClick(room.id)}>Select</Button>
+            <Button onClick={() => handleOnClick(room.id)}>Select</Button>
           </CardFooter>
         </Card>
       ))}
     </SimpleGrid>
   );
+};
+
+const findPatient = (patients: patient[], patientID: number | null) => {
+  //let found = false;
+  // patients.forEach((pat) => {
+  //   if (pat.id == patientID) {
+  //     found = true;
+  //     console.log(pat.name);
+  //     console.log(typeof pat.name);
+  //     return pat.name;
+  //   }
+  // });
+
+  // if (!found) {
+  //   return 'VACANT';
+  // }
+
+  let currPat = patients.filter((pat) => pat.id == patientID);
+
+  let currName = currPat[0]?.name;
+
+  if (currName != undefined) {
+    return currName;
+  } else {
+    return 'VACANT';
+  }
+
+  // return currPat[0].name ? currPat[0].name : 'VACANT';
 };
 
 export default Grid;
