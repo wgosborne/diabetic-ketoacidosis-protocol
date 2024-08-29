@@ -31,7 +31,8 @@ const Grid = ({ rooms, patients }: GridProps) => {
       columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
       padding="10px"
       spacing={6}
-      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+      //lg:grid-cols-5
     >
       {rooms.map((room: room) => (
         <Card key={room.id}>
@@ -42,7 +43,25 @@ const Grid = ({ rooms, patients }: GridProps) => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <p>Card Content</p>
+            <b className="text-sm">Serum Ketone Time: </b>
+            <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+              {room.sKqTime || 'NULL'}
+            </code>
+            <br />
+            <b className="text-sm">Phosphorous Time: </b>
+            <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+              {room.PqTime || 'NULL'}
+            </code>
+            <br />
+            <b className="text-sm">BMP Time: </b>
+            <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+              {room.BMPqTime || 'NULL'}
+            </code>
+            <br />
+            <b className="text-sm">Blood Glucose Time: </b>
+            <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+              {room.bloodGlucoseTime || 'NULL'}
+            </code>
           </CardContent>
           <CardFooter>
             <Button onClick={() => handleOnClick(room.id)}>Select</Button>
