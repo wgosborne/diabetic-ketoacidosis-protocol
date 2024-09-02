@@ -2,13 +2,18 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { patient } from '@prisma/client';
 
-const UserInfo = () => {
+interface UserInfoProps {
+  currPatient: patient;
+}
+
+const UserInfo = ({ currPatient }: UserInfoProps) => {
   return (
     <div>
       <div>
         <div className="mb-3">
-          <Badge className="text-xl">user info</Badge>
+          <Badge className="text-xl">{currPatient?.name}</Badge>
         </div>
       </div>
     </div>

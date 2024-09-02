@@ -3,24 +3,29 @@ import prisma from '@/prisma/client';
 import Protocol from './protocol';
 
 const page = async ({ params }: { params: { id: number } }) => {
-  try {
-    const thisRoom = await prisma.room.findUnique({
-      where: {
-        //@ts-ignore because it think its an int but it still makes me parse
-        id: parseInt(params.id)
-      }
-    });
+  const emptyPatient = {
+    id: -1,
+    name: 'VACANT',
+    status: -1
+  };
+  const thisRoom = await prisma.room.findUnique({
+    where: {
+      //@ts-ignore because it think its an int but it still makes me parse
+      id: parseInt(params.id)
+    }
+  });
 
+  if (!thisRoom) {
+    throw new Error('Room not found');
+  }
+
+  try {
     const thisPatient = await prisma.patient.findUnique({
       where: {
         //@ts-ignore because it think its an int but it still makes me parse
         id: thisRoom?.patientID
       }
     });
-
-    if (!thisRoom) {
-      throw new Error('Room not found');
-    }
 
     if (!thisPatient) {
       throw new Error('Patient not found');
@@ -32,8 +37,12 @@ const page = async ({ params }: { params: { id: number } }) => {
       </div>
     );
   } catch (error) {
-    console.error('Error fetching room:', error);
-    return <div>Error: Room Information Not Found</div>;
+    console.error('Patient not found:', error);
+    return (
+      <div>
+        <Protocol currRoom={thisRoom} currPatient={emptyPatient} />
+      </div>
+    );
   }
 };
 

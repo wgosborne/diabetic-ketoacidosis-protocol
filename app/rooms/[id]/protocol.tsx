@@ -125,7 +125,7 @@ const Protocol = ({ currRoom, currPatient }: ProtocolProps) => {
 
   return (
     <div className="">
-      <UserInfo />
+      <UserInfo currPatient={currPatient}/>
       {renderSwitch(step)}
       <Recurring
         currRoom={currRoom}
