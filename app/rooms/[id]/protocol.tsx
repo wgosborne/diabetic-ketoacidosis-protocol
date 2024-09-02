@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import prisma from '@/prisma/client';
 import axios from 'axios';
-import { room } from '@prisma/client';
+import { patient, room } from '@prisma/client';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Recurring from './components/recurringOrders';
@@ -13,12 +13,14 @@ import StepThree from './steps/stepThree';
 import StepFour from './steps/stepFour';
 import StepFive from './steps/stepFive';
 import StepSix from './steps/stepSix';
+import UserInfo from './components/userInfo';
 
 interface ProtocolProps {
   currRoom: room;
+  currPatient: patient;
 }
 
-const Protocol = ({ currRoom }: ProtocolProps) => {
+const Protocol = ({ currRoom, currPatient }: ProtocolProps) => {
   const [step, setStep] = useState(currRoom.step || 1);
   const [potassium, setPotassium] = useState(-1);
   const [anionGap, setAnionGap] = useState(-1);
@@ -123,6 +125,7 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
 
   return (
     <div className="">
+      <UserInfo />
       {renderSwitch(step)}
       <Recurring
         currRoom={currRoom}
@@ -154,7 +157,6 @@ const Protocol = ({ currRoom }: ProtocolProps) => {
         setsKqCount={setsKqCount}
         anionGap={anionGap}
         setAnionGap={setAnionGap}
-
       />
       <Button onClick={() => handleOnSubmit(step)} className="mr-3">
         Next Step
