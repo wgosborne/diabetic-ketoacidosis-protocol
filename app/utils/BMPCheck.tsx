@@ -8,10 +8,11 @@ const StartBMPTimeOut = (bmpTime: Number | null, anionGap: Number | null) => {
 
   setTimeout(() => {
     //Put the function here
-    alert('Time to update the patients BMP if the anion gap is less than or equla to 16 you can stop');
+    alert(
+      'Time to update the patients BMP if the anion gap is less than or equla to 16 you can stop'
+    );
 
     //add an anion gap  check here
-    
   }, intervalInMilliseconds);
 
   //pull the amount of time its been from the db
