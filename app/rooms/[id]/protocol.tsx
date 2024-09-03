@@ -72,11 +72,44 @@ const Protocol = ({ currRoom, currPatient }: ProtocolProps) => {
     switch (step) {
       case 1:
         return (
-          <StepOne
-            currRoom={currRoom}
-            potassium={potassium}
-            setPotassium={setPotassium}
-          />
+          <div>
+            <Recurring
+              currRoom={currRoom}
+              potassium={potassium}
+              setPotassium={setPotassium}
+              weight={weight}
+              setWeight={setWeight}
+              rate={rate}
+              setRate={setRate}
+              bloodGlucose={bloodGlucose}
+              setBloodGlucose={setBloodGlucose}
+              bGTime={bloodGlucoseTime}
+              setBGTime={setBloodGlucoseTime}
+              bmp={bmp}
+              setBMP={setBMP}
+              BMPTime={BMPqTime}
+              setBMPTime={setBMPqTime}
+              PhosTime={PqTime}
+              setPhosTime={setPqTime}
+              phosphorus={phosphorus}
+              setPhosphorus={setPhosphorus}
+              phosCount={PqCount}
+              setPhosCount={setPqCount}
+              serumKetones={serumKetones}
+              setSerumKetones={setSerumKetones}
+              sKqTime={sKqTime}
+              setsKqTime={setsKqTime}
+              sKqCount={sKqCount}
+              setsKqCount={setsKqCount}
+              anionGap={anionGap}
+              setAnionGap={setAnionGap}
+            />
+            <StepOne
+              currRoom={currRoom}
+              potassium={potassium}
+              setPotassium={setPotassium}
+            />
+          </div>
         );
       case 2:
         return <StepTwo />;
@@ -127,37 +160,6 @@ const Protocol = ({ currRoom, currPatient }: ProtocolProps) => {
     <div className="">
       <UserInfo currPatient={currPatient}/>
       {renderSwitch(step)}
-      <Recurring
-        currRoom={currRoom}
-        potassium={potassium}
-        setPotassium={setPotassium}
-        weight={weight}
-        setWeight={setWeight}
-        rate={rate}
-        setRate={setRate}
-        bloodGlucose={bloodGlucose}
-        setBloodGlucose={setBloodGlucose}
-        bGTime={bloodGlucoseTime}
-        setBGTime={setBloodGlucoseTime}
-        bmp={bmp}
-        setBMP={setBMP}
-        BMPTime={BMPqTime}
-        setBMPTime={setBMPqTime}
-        PhosTime={PqTime}
-        setPhosTime={setPqTime}
-        phosphorus={phosphorus}
-        setPhosphorus={setPhosphorus}
-        phosCount={PqCount}
-        setPhosCount={setPqCount}
-        serumKetones={serumKetones}
-        setSerumKetones={setSerumKetones}
-        sKqTime={sKqTime}
-        setsKqTime={setsKqTime}
-        sKqCount={sKqCount}
-        setsKqCount={setsKqCount}
-        anionGap={anionGap}
-        setAnionGap={setAnionGap}
-      />
       <Button onClick={() => handleOnSubmit(step)} className="mr-3">
         Next Step
       </Button>

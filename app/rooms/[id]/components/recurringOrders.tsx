@@ -74,7 +74,7 @@ const Recurring = ({
       <div className="mb-3">
         <Card>
           <CardHeader>
-            <CardTitle>Recurring Laboratory Orders</CardTitle>
+            <CardTitle>Initial Laboratory Orders</CardTitle>
             {/* <CardDescription>
               {potassium} {weight}
             </CardDescription> */}
