@@ -15,7 +15,7 @@ import findPatient from '../actions/FindPatient';
 const StartBGTimeOut = (
   currRoom: room,
   BGTime: number | null,
-  currPatient?: patient
+  currPatient: patient
 ) => {
   const intervalInMilliseconds = 60 * 60 * 1000; // 1 hour in milliseconds
 
@@ -24,7 +24,7 @@ const StartBGTimeOut = (
   setTimeout(async () => {
     //Put the function here
 
-    currPatient
+    !(currPatient.name == 'VACANT')
       ? alert(
           'Time to update ' +
             currPatient.name +
@@ -36,7 +36,7 @@ const StartBGTimeOut = (
 
     //add insulin check here
     //this will render the new single update component or have it in the modal
-  }, intervalInMilliseconds);
+  }, 3000);
 
   //pull the amount of time its been from the db
 };
