@@ -178,12 +178,7 @@ const Update = ({
     }
     //Setting the timeout for the times
     StartBMPTimeOut(currRoom, currRoom.BMPqTime, currRoom.anionGap);
-    update = StartBGTimeOut(
-      currRoom,
-      currRoom.bloodGlucoseTime,
-      onNewBGTime,
-      onNewBloodGlucose
-    );
+    StartBGTimeOut(currRoom, currRoom.bloodGlucoseTime);
     StartPhosTimeOut(currRoom, currRoom.PqTime, currRoom.PqCount);
     //CheckPhosCount(currRoom, currRoom.PqCount); dont need this and CheckSK count because they get called in the start timeout
     StartSKTimeOut(currRoom, currRoom.sKqTime, currRoom.sKqCount);
