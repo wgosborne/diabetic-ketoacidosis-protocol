@@ -3,11 +3,12 @@
 import React from 'react';
 import SheetThree from '../components/sheetStepThree';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { room } from '@prisma/client';
+import { patient, room } from '@prisma/client';
 import Update from './statsUpdate';
 
 interface RecurringProps {
   currRoom: room;
+  currPatient: patient;
   potassium: number;
   setPotassium: (value: number) => void;
   weight: number;
@@ -40,6 +41,7 @@ interface RecurringProps {
 
 const Recurring = ({
   currRoom,
+  currPatient,
   potassium,
   setPotassium,
   weight,
@@ -94,6 +96,7 @@ const Recurring = ({
 
             <Update
               currRoom={currRoom}
+              currPatient={currPatient}
               potassium={potassium}
               weight={weight}
               rate={rate}

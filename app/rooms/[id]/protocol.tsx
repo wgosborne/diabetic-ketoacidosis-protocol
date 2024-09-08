@@ -75,6 +75,7 @@ const Protocol = ({ currRoom, currPatient }: ProtocolProps) => {
           <div>
             <Recurring
               currRoom={currRoom}
+              currPatient={currPatient}
               potassium={potassium}
               setPotassium={setPotassium}
               weight={weight}
