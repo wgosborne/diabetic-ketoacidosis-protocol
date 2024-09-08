@@ -7,6 +7,7 @@ import {
   CardTitle,
   CardDescription
 } from '@/components/ui/card';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
@@ -19,6 +20,7 @@ import {
   CheckPhosCount
 } from '../../../utils/PhosphorusCheck';
 import { StartSKTimeOut, CheckSKCount } from '../../../utils/SKCheck';
+import SingleUpdate from './singleUpdate';
 
 interface UpdateProps {
   currRoom: room;
@@ -94,6 +96,8 @@ const Update = ({
     },
     shouldUnregister: true
   });
+
+  let update = false;
 
   const pushDatabase = async () => {
     try {
@@ -173,18 +177,39 @@ const Update = ({
       currRoom.anionGap = data.anionGap;
     }
     //Setting the timeout for the times
-    StartBMPTimeOut(currRoom.BMPqTime, currRoom.anionGap);
-    StartBGTimeOut(currRoom.bloodGlucoseTime);
-    StartPhosTimeOut(currRoom.PqTime, currRoom.PqCount);
-    CheckPhosCount(currRoom.PqCount);
-    StartSKTimeOut(currRoom.sKqTime, currRoom.sKqCount);
-    CheckSKCount(currRoom.sKqCount);
+    StartBMPTimeOut(currRoom, currRoom.BMPqTime, currRoom.anionGap);
+    update = StartBGTimeOut(
+      currRoom,
+      currRoom.bloodGlucoseTime,
+      onNewBGTime,
+      onNewBloodGlucose
+    );
+    StartPhosTimeOut(currRoom, currRoom.PqTime, currRoom.PqCount);
+    //CheckPhosCount(currRoom, currRoom.PqCount); dont need this and CheckSK count because they get called in the start timeout
+    StartSKTimeOut(currRoom, currRoom.sKqTime, currRoom.sKqCount);
+    //CheckSKCount(currRoom, currRoom.sKqCount);
 
     pushDatabase();
   };
 
   return (
     <div>
+      {update ? (
+        <Alert>
+          <AlertTitle>Time to update the patients Blood Glucose!</AlertTitle>
+          <AlertDescription>
+            <SingleUpdate
+              currRoom={currRoom}
+              currData={currRoom?.bloodGlucose}
+              currSetter={onNewBloodGlucose}
+              time={null}
+              timeSetter={onNewBGTime}
+            />
+          </AlertDescription>
+        </Alert>
+      ) : (
+        <></>
+      )}
       <div className="bg-slate-950 rounded-md shadow-md">
         <form
           onSubmit={handleSubmit(onSubmit)}

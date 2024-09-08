@@ -4,14 +4,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@radix-ui/react-label';
 import { Input } from '@/components/ui/input';
 import { useForm } from 'react-hook-form';
+import { room } from '@prisma/client';
 
 interface SingleUpdateProps {
-  currRoom: number;
-  currData: number;
+  currRoom: room | null;
+  currData?: number | null;
   currSetter: (value: number) => void;
-  time?: number;
+  time: Number | null;
   timeSetter?: (value: number) => void;
-  count?: number;
+  count?: number | null;
   countSetter?: (value: number) => void;
 }
 
@@ -31,6 +32,8 @@ const SingleUpdate = ({
     shouldUnregister: true
   });
 
+  //I do not know what to do about the currRoom.count references and such
+
   const pushDatabase = async () => {
     try {
       //await axios.patch('/api/room/' + currRoom.id, currRoom);
@@ -42,13 +45,27 @@ const SingleUpdate = ({
 
   const onSubmit = (data: any) => {
     //Update state everywhere
-    // if (data.bloodGlucose) {
-    //   onNewBloodGlucose(data.bloodGlucose);
-    //   currRoom.bloodGlucose = data.bloodGlucose;
 
-    //   onNewBGTime(Date.now());
-    //   currRoom.bloodGlucoseTime = Date.now();
-    // }
+    currSetter(data);
+    //currRoom.bloodGlucose = data.bloodGlucose;
+
+    if (timeSetter) {
+      timeSetter(Date.now());
+      //currRoom.bloodGlucoseTime = Date.now();
+    }
+
+    if (countSetter) {
+      if (data <= 3) {
+        countSetter(++data);
+        //currRoom.PqCount = ++phosCount;
+      } else {
+        //reset phosphorus here
+        console.log('data being reset');
+        count = 0;
+        countSetter(++data);
+        //currRoom.PqCount = ++phosCount;
+      }
+    }
 
     // //Setting the timeout for the times
     // StartBMPTimeOut(currRoom.BMPqTime, currRoom.anionGap);
