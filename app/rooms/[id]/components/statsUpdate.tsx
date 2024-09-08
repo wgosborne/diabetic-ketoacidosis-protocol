@@ -11,7 +11,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { room } from '@prisma/client';
+import { patient, room } from '@prisma/client';
 import { useForm } from 'react-hook-form';
 import StartBMPTimeOut from '../../../utils/BMPCheck';
 import StartBGTimeOut from '../../../utils/BloodGlucoseCheck';
@@ -24,6 +24,7 @@ import SingleUpdate from './singleUpdate';
 
 interface UpdateProps {
   currRoom: room;
+  currPatient: patient;
   potassium: number;
   weight: number;
   rate: number;
@@ -56,6 +57,7 @@ interface UpdateProps {
 
 const Update = ({
   currRoom,
+  currPatient,
   potassium,
   weight,
   rate,
@@ -178,7 +180,7 @@ const Update = ({
     }
     //Setting the timeout for the times
     StartBMPTimeOut(currRoom, currRoom.BMPqTime, currRoom.anionGap);
-    StartBGTimeOut(currRoom, currRoom.bloodGlucoseTime);
+    StartBGTimeOut(currRoom, currRoom.bloodGlucoseTime, currPatient);
     StartPhosTimeOut(currRoom, currRoom.PqTime, currRoom.PqCount);
     //CheckPhosCount(currRoom, currRoom.PqCount); dont need this and CheckSK count because they get called in the start timeout
     StartSKTimeOut(currRoom, currRoom.sKqTime, currRoom.sKqCount);
