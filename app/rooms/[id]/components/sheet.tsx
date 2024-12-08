@@ -6,10 +6,12 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger} from '@/components/ui/sheet';
+  SheetTrigger
+} from '@/components/ui/sheet';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { room } from '@prisma/client';
 
 interface SheetProps {
@@ -34,7 +36,7 @@ const MySheet = ({ currRoom, potassium, onNew }: SheetProps) => {
     <div>
       <Sheet>
         <SheetTrigger>
-          <Button>Start Here</Button>
+          <Badge className="text-lg">Start Here</Badge>
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
