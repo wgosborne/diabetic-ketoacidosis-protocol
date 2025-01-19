@@ -19,9 +19,11 @@ const StartBGTimeOut = (
 ) => {
   const intervalInMilliseconds = 60 * 60 * 1000; // 1 hour in milliseconds
 
-  console.log(BGTime);
+  //const intervalInMilliseconds = 30000; //5secs
 
-  setTimeout(async () => {
+  console.log('BloodGlucoseCheck.tsx 22', BGTime);
+
+  setInterval(async () => {
     //Put the function here
 
     !(currPatient.name == 'VACANT')
@@ -36,7 +38,7 @@ const StartBGTimeOut = (
 
     //add insulin check here
     //this will render the new single update component or have it in the modal
-  }, 3000);
+  }, intervalInMilliseconds);
 
   //pull the amount of time its been from the db
 };
